@@ -5,5 +5,6 @@ This documentation is for the **React frontend** of the content-driven website c
 ## Tech Stack
 
 - Language: TypeScript
-- Library: React w/Vite
+- UI Library: React w/Vite
+- Routing: React Router
 - Lint &amp; Format: Biome w/Husky pre-commit
