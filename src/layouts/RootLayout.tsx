@@ -2,11 +2,15 @@ import { Outlet } from "react-router";
 export default function RootLayout() {
 	return (
 		<>
-			<header>Header</header>
+			<header>
+				<h1>
+					Model Homes of the Golden Gate International Exposition, 1939-40
+				</h1>
+			</header>
 			<main>
 				<Outlet />
 			</main>
-			<footer>Footer</footer>
+			<footer>© 2026</footer>
 		</>
 	);
 }
