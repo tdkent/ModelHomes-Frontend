@@ -1,7 +1,7 @@
 export default function IndexPage() {
 	return (
 		<>
-			<h2>Index Page</h2>
+			<h2>Home</h2>
 		</>
 	);
 }
