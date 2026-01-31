@@ -1,0 +1,49 @@
+name: 'Deploy Frontend Application'
+on: 
+  pull_request:
+    types:
+      - opened
+      - edited
+    paths-ignore: 
+      - ".github/workflows/*"
+jobs:
+  lint:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Get code
+        uses: actions/checkout@v6
+      
+      - name: Install deps
+        run: npm ci
+      
+      - name: Lint code
+        run: npm run lint
+    
+  test:
+    needs: lint
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Get code
+        uses: actions/checkout@v6
+
+      - name: Install deps
+        run: npm ci
+      
+      - name: Test code
+        run: npm run test
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v6
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload to S3 bucket
+        run: echo "Uploading..."
