@@ -6,11 +6,6 @@ on:
       - edited
     paths-ignore: 
       - ".github/workflows/*"
-  push:
-    branches:
-      - main
-    paths-ignore: 
-      - ".github/workflows/*"
   
   workflow_dispatch:
     
@@ -39,19 +34,3 @@ jobs:
       
       - name: Test code
         run: npm run test
-
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v6
-
-      - name: Install deps
-        run: npm ci
-
-      - name: Build project
-        run: npm run build
-
-      - name: Upload to S3 bucket
-        run: echo "Uploading..."
