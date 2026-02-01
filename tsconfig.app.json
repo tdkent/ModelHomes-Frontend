@@ -12,6 +12,14 @@
 		],
 		"skipLibCheck": true,
 
+		// Path Aliases
+		"baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+
 		/* Bundler mode */
 		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
