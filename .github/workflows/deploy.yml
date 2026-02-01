@@ -15,6 +15,14 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v6
+
+      - name: Cache deps
+        uses: actions/cache@v5
+        with:
+          path: ~/.npm
+          # Creates a new key when package-lock.json is updated
+          # When a new key is found, GHA will update the cache
+          key: deps-node-module-${{ hashFiles('**/package-lock.json') }}
       
       - name: Install deps
         run: npm ci
@@ -28,6 +36,12 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v6
+
+      - name: Cache deps
+        uses: actions/cache@v5
+        with:
+          path: ~/.npm
+          key: deps-node-module-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install deps
         run: npm ci
