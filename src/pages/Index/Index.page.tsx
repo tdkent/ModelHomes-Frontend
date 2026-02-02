@@ -37,10 +37,11 @@ export default function IndexPage() {
 				</p>
 				<p>
 					The houses were intended to be affordable by middle-income families,
-					with prices raging from less than $5,000 to $15,000 at the high end.
-					Most of the homes ended up costing more than originally intended,
-					perhaps due to architectural exuberance, and few if any would have
-					been within the budgets of lower-income households.
+					with prices raging from less than $5,000 to $15,000 ($115,000 and
+					$345,000, respectively, in 2025) at the high end. Most of the homes
+					ended up costing more than originally intended, perhaps due to
+					architectural exuberance, and few if any would have been within the
+					budgets of lower-income households.
 				</p>
 			</section>
 			<section>
