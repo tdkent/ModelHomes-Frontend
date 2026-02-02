@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export default function IndexPage() {
+export default function HomePage() {
 	return (
 		<article>
 			<h1>

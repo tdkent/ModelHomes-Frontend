@@ -1,4 +1,4 @@
-export default function HomesPage() {
+export default function TourPage() {
 	return (
 		<div>
 			<h1>Model Home Tour</h1>
