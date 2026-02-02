@@ -25,7 +25,9 @@ describe("App root layer", () => {
 			</MemoryRouter>,
 		);
 
-		expect(screen.getByRole("heading", { name: "About" })).toBeInTheDocument();
+		expect(
+			screen.getByRole("heading", { name: /about this website/i }),
+		).toBeInTheDocument();
 	});
 
 	it("renders Homes page at /homes", () => {
@@ -99,7 +101,7 @@ describe("Root nav element", () => {
 		await user.click(screen.getByRole("link", { name: /about/i }));
 
 		expect(
-			await screen.findByRole("heading", { name: /about/i }),
+			await screen.findByRole("heading", { name: /about this website/i }),
 		).toBeInTheDocument();
 	});
 
@@ -111,7 +113,9 @@ describe("Root nav element", () => {
 		);
 
 		await user.click(screen.getByRole("link", { name: /about/i }));
-		expect(screen.getByRole("heading", { name: /about/i })).toBeInTheDocument();
+		expect(
+			screen.getByRole("heading", { name: /about this website/i }),
+		).toBeInTheDocument();
 	});
 
 	it("navigates from About to Model Houses using mobile nav", async () => {
