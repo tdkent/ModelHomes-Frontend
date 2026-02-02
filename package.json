@@ -19,6 +19,9 @@
 		"*": "biome check --write --no-errors-on-unmatched --verbose"
 	},
 	"dependencies": {
+		"@radix-ui/react-dialog": "^1.1.15",
+		"@radix-ui/react-navigation-menu": "^1.2.14",
+		"@radix-ui/react-separator": "^1.1.8",
 		"@radix-ui/react-slot": "^1.2.4",
 		"@tailwindcss/vite": "^4.1.18",
 		"class-variance-authority": "^0.7.1",
@@ -28,7 +31,8 @@
 		"react-dom": "^19.2.0",
 		"react-router": "^7.13.0",
 		"tailwind-merge": "^3.4.0",
-		"tailwindcss": "^4.1.18"
+		"tailwindcss": "^4.1.18",
+		"vaul": "^1.1.2"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.3.13",
