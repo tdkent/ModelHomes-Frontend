@@ -5,7 +5,7 @@ import type { Link } from "@/types/types";
 const links: Link[] = [
 	{ label: "Home", href: "/" },
 	{ label: "About", href: "/about" },
-	{ label: "Model Houses", href: "/homes" },
+	{ label: "Model Home Tour", href: "/homes" },
 ];
 
 /** Render nav elements based on CSS breakpoint. */

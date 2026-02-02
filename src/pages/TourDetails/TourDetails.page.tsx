@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import checkHomeId from "../../helpers/checkHomeId";
 import NotFoundPage from "../NotFound.page";
 
-export default function SingleHomePage() {
+export default function TourDetailsPage() {
 	const { id } = useParams();
 
 	const isValidId = checkHomeId(id);
