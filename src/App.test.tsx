@@ -34,7 +34,7 @@ describe("App root layer", () => {
 		).toBeInTheDocument();
 	});
 
-	it("renders Homes page at /homes", () => {
+	it("renders Tour page at /homes", () => {
 		render(
 			<MemoryRouter initialEntries={["/homes"]}>
 				<App />
@@ -42,11 +42,11 @@ describe("App root layer", () => {
 		);
 
 		expect(
-			screen.getByRole("heading", { name: "Index of Model Houses" }),
+			screen.getByRole("heading", { name: /model home tour/i }),
 		).toBeInTheDocument();
 	});
 
-	it("renders Single Home page with correct ID at /homes/5", () => {
+	it("renders Tour Details page with correct ID at /homes/5", () => {
 		render(
 			<MemoryRouter initialEntries={["/homes/5"]}>
 				<App />
@@ -54,7 +54,7 @@ describe("App root layer", () => {
 		);
 
 		expect(
-			screen.getByRole("heading", { name: "Model Home No. 5" }),
+			screen.getByRole("heading", { name: /model home no. 5/i }),
 		).toBeInTheDocument();
 	});
 
@@ -73,7 +73,7 @@ describe("App root layer", () => {
 		);
 
 		expect(
-			screen.getByRole("heading", { name: "404 - Page Not Found" }),
+			screen.getByRole("heading", { name: /404 - page not found/i }),
 		).toBeInTheDocument();
 	});
 
@@ -85,7 +85,7 @@ describe("App root layer", () => {
 		);
 
 		expect(
-			screen.getByRole("heading", { name: "404 - Page Not Found" }),
+			screen.getByRole("heading", { name: /404 - page not found/i }),
 		).toBeInTheDocument();
 	});
 });
@@ -122,7 +122,7 @@ describe("Root nav element", () => {
 		).toBeInTheDocument();
 	});
 
-	it("navigates from About to Model Houses using mobile nav", async () => {
+	it("navigates from About to Tour using mobile nav", async () => {
 		render(
 			<MemoryRouter initialEntries={["/about"]}>
 				<App />
@@ -130,21 +130,21 @@ describe("Root nav element", () => {
 		);
 
 		await user.click(screen.getByRole("button"));
-		await user.click(screen.getByRole("link", { name: /model houses/i }));
+		await user.click(screen.getByRole("link", { name: /model home tour/i }));
 
 		expect(
-			await screen.findByRole("heading", { name: /index of model houses/i }),
+			await screen.findByRole("heading", { name: /model home tour/i }),
 		).toBeInTheDocument();
 	});
 
-	it("navigates from Model Houses to Home using desktop nav", async () => {
+	it("navigates from Tour to Home using desktop nav", async () => {
 		render(
 			<MemoryRouter initialEntries={["/homes"]}>
 				<App />
 			</MemoryRouter>,
 		);
 
-		await user.click(screen.getByRole("link", { name: /home/i }));
+		await user.click(screen.getByRole("link", { name: "Home" }));
 		expect(
 			screen.getByRole("heading", {
 				name: /Model Homes of the San Francisco International Exposition, 1939-40/i,
@@ -152,7 +152,7 @@ describe("Root nav element", () => {
 		).toBeInTheDocument();
 	});
 
-	it("navigates from House to Model Houses using mobile nav", async () => {
+	it("navigates from Tour Details to Tour using mobile nav", async () => {
 		render(
 			<MemoryRouter initialEntries={["/homes/1"]}>
 				<App />
@@ -160,10 +160,10 @@ describe("Root nav element", () => {
 		);
 
 		await user.click(screen.getByRole("button"));
-		await user.click(screen.getByRole("link", { name: /model houses/i }));
+		await user.click(screen.getByRole("link", { name: /model home tour/i }));
 
 		expect(
-			await screen.findByRole("heading", { name: /model houses/i }),
+			await screen.findByRole("heading", { name: /model home tour/i }),
 		).toBeInTheDocument();
 	});
 
@@ -174,7 +174,7 @@ describe("Root nav element", () => {
 			</MemoryRouter>,
 		);
 
-		await user.click(screen.getByRole("link", { name: /home/i }));
+		await user.click(screen.getByRole("link", { name: "Home" }));
 		expect(
 			screen.getByRole("heading", {
 				name: /Model Homes of the San Francisco International Exposition, 1939-40/i,
