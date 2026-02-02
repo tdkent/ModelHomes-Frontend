@@ -15,7 +15,11 @@ describe("App root layer", () => {
 			</MemoryRouter>,
 		);
 
-		expect(screen.getByRole("heading", { name: "Home" })).toBeInTheDocument();
+		expect(
+			screen.getByRole("heading", {
+				name: /Model Homes of the San Francisco International Exposition, 1939-40/i,
+			}),
+		).toBeInTheDocument();
 	});
 
 	it("renders About page at /about", () => {
@@ -141,7 +145,11 @@ describe("Root nav element", () => {
 		);
 
 		await user.click(screen.getByRole("link", { name: /home/i }));
-		expect(screen.getByRole("heading", { name: /home/i })).toBeInTheDocument();
+		expect(
+			screen.getByRole("heading", {
+				name: /Model Homes of the San Francisco International Exposition, 1939-40/i,
+			}),
+		).toBeInTheDocument();
 	});
 
 	it("navigates from House to Model Houses using mobile nav", async () => {
@@ -167,6 +175,10 @@ describe("Root nav element", () => {
 		);
 
 		await user.click(screen.getByRole("link", { name: /home/i }));
-		expect(screen.getByRole("heading", { name: /home/i })).toBeInTheDocument();
+		expect(
+			screen.getByRole("heading", {
+				name: /Model Homes of the San Francisco International Exposition, 1939-40/i,
+			}),
+		).toBeInTheDocument();
 	});
 });
