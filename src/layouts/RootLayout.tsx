@@ -1,12 +1,9 @@
 import { Outlet } from "react-router";
+import Header from "@/components/layout/Header";
 export default function RootLayout() {
 	return (
 		<>
-			<header>
-				<h1>
-					Model Homes of the Golden Gate International Exposition, 1939-40
-				</h1>
-			</header>
+			<Header />
 			<main>
 				<Outlet />
 			</main>
