@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router";
 import App from "./App";
 
@@ -6,9 +7,8 @@ import App from "./App";
  * Test that defined routes render the correct UI
  * Test that undefined routes render 404 UI
  */
-
-describe("App.tsx component", () => {
-	it("renders Index page at /", () => {
+describe("App root layer", () => {
+	it("renders Index page at /", async () => {
 		render(
 			<MemoryRouter initialEntries={["/"]}>
 				<App />
@@ -36,7 +36,7 @@ describe("App.tsx component", () => {
 		);
 
 		expect(
-			screen.getByRole("heading", { name: "Index of Homes" }),
+			screen.getByRole("heading", { name: "Index of Model Houses" }),
 		).toBeInTheDocument();
 	});
 
@@ -81,5 +81,88 @@ describe("App.tsx component", () => {
 		expect(
 			screen.getByRole("heading", { name: "404 - Page Not Found" }),
 		).toBeInTheDocument();
+	});
+});
+
+/** Test primary navigation elements. */
+describe("Root nav element", () => {
+	const user = userEvent.setup();
+
+	it("navigates from Home to About using mobile nav", async () => {
+		render(
+			<MemoryRouter initialEntries={["/"]}>
+				<App />
+			</MemoryRouter>,
+		);
+
+		await user.click(screen.getByRole("button"));
+		await user.click(screen.getByRole("link", { name: /about/i }));
+
+		expect(
+			await screen.findByRole("heading", { name: /about/i }),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from Home to About using desktop nav", async () => {
+		render(
+			<MemoryRouter initialEntries={["/"]}>
+				<App />
+			</MemoryRouter>,
+		);
+
+		await user.click(screen.getByRole("link", { name: /about/i }));
+		expect(screen.getByRole("heading", { name: /about/i })).toBeInTheDocument();
+	});
+
+	it("navigates from About to Model Houses using mobile nav", async () => {
+		render(
+			<MemoryRouter initialEntries={["/about"]}>
+				<App />
+			</MemoryRouter>,
+		);
+
+		await user.click(screen.getByRole("button"));
+		await user.click(screen.getByRole("link", { name: /model houses/i }));
+
+		expect(
+			await screen.findByRole("heading", { name: /index of model houses/i }),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from Model Houses to Home using desktop nav", async () => {
+		render(
+			<MemoryRouter initialEntries={["/homes"]}>
+				<App />
+			</MemoryRouter>,
+		);
+
+		await user.click(screen.getByRole("link", { name: /home/i }));
+		expect(screen.getByRole("heading", { name: /home/i })).toBeInTheDocument();
+	});
+
+	it("navigates from House to Model Houses using mobile nav", async () => {
+		render(
+			<MemoryRouter initialEntries={["/homes/1"]}>
+				<App />
+			</MemoryRouter>,
+		);
+
+		await user.click(screen.getByRole("button"));
+		await user.click(screen.getByRole("link", { name: /model houses/i }));
+
+		expect(
+			await screen.findByRole("heading", { name: /model houses/i }),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from Not Found to Home using desktop nav", async () => {
+		render(
+			<MemoryRouter initialEntries={["/bad-route"]}>
+				<App />
+			</MemoryRouter>,
+		);
+
+		await user.click(screen.getByRole("link", { name: /home/i }));
+		expect(screen.getByRole("heading", { name: /home/i })).toBeInTheDocument();
 	});
 });
