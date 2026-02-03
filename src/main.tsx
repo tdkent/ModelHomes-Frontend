@@ -1,12 +1,20 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter } from "react-router";
+import GlobalErrorBoundary from "@/GlobalError";
 import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
+		<ErrorBoundary
+			fallbackRender={({ error, resetErrorBoundary }) => (
+				<GlobalErrorBoundary error={error} reset={resetErrorBoundary} />
+			)}
+		>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</ErrorBoundary>
 	</StrictMode>,
 );
