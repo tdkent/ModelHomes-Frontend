@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import Loading from "@/components/Loading";
 import { BACKEND_URL } from "@/constants/constants";
 
 export default function TourList() {
@@ -12,6 +13,10 @@ export default function TourList() {
 	});
 
 	console.log(isPending, error, data);
+
+	if (isPending) {
+		return <Loading />;
+	}
 
 	return <>Tour List</>;
 }

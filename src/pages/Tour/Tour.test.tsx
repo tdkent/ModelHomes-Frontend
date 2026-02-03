@@ -16,7 +16,7 @@ describe("Tour page", () => {
 		);
 
 		// Test loading state
-		expect(screen.getByText(/loading.../i)).toBeInTheDocument();
+		expect(screen.getByTestId(/loading-skeleton/i)).toBeInTheDocument();
 
 		const list = await screen.findByRole("list"); // nav list will interfere?
 		expect(list).toBeInTheDocument();
