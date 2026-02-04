@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter } from "react-router";
+import { renderWithClient } from "@/test/render";
 import App from "./App";
 
 /**
@@ -9,11 +9,7 @@ import App from "./App";
  */
 describe("App root layer", () => {
 	it("renders Index page at /", async () => {
-		render(
-			<MemoryRouter initialEntries={["/"]}>
-				<App />
-			</MemoryRouter>,
-		);
+		renderWithClient(<App />, ["/"]);
 
 		expect(
 			screen.getByRole("heading", {
@@ -23,11 +19,7 @@ describe("App root layer", () => {
 	});
 
 	it("renders About page at /about", () => {
-		render(
-			<MemoryRouter initialEntries={["/about"]}>
-				<App />
-			</MemoryRouter>,
-		);
+		renderWithClient(<App />, ["/about"]);
 
 		expect(
 			screen.getByRole("heading", { name: /about this website/i }),
@@ -35,11 +27,7 @@ describe("App root layer", () => {
 	});
 
 	it("renders Tour page at /homes", () => {
-		render(
-			<MemoryRouter initialEntries={["/homes"]}>
-				<App />
-			</MemoryRouter>,
-		);
+		renderWithClient(<App />, ["/homes"]);
 
 		expect(
 			screen.getByRole("heading", { name: /model home tour/i }),
@@ -47,11 +35,7 @@ describe("App root layer", () => {
 	});
 
 	it("renders Tour Details page with correct ID at /homes/5", () => {
-		render(
-			<MemoryRouter initialEntries={["/homes/5"]}>
-				<App />
-			</MemoryRouter>,
-		);
+		renderWithClient(<App />, ["/homes/5"]);
 
 		expect(
 			screen.getByRole("heading", { name: /model home no. 5/i }),
@@ -59,18 +43,12 @@ describe("App root layer", () => {
 	});
 
 	it("renders 404 page if home ID is not valid", () => {
-		render(
-			<MemoryRouter
-				initialEntries={[
-					"/homes/bad-route",
-					"/homes/-1",
-					"/homes/13",
-					"/homes/22",
-				]}
-			>
-				<App />
-			</MemoryRouter>,
-		);
+		renderWithClient(<App />, [
+			"/homes/bad-route",
+			"/homes/-1",
+			"/homes/13",
+			"/homes/22",
+		]);
 
 		expect(
 			screen.getByRole("heading", { name: /404 - page not found/i }),
@@ -78,11 +56,7 @@ describe("App root layer", () => {
 	});
 
 	it("renders 404 page at unknown routes", () => {
-		render(
-			<MemoryRouter initialEntries={["/bad-route"]}>
-				<App />
-			</MemoryRouter>,
-		);
+		renderWithClient(<App />, ["/bad-route"]);
 
 		expect(
 			screen.getByRole("heading", { name: /404 - page not found/i }),
@@ -95,11 +69,7 @@ describe("Root nav element", () => {
 	const user = userEvent.setup();
 
 	it("navigates from Home to About using mobile nav", async () => {
-		render(
-			<MemoryRouter initialEntries={["/"]}>
-				<App />
-			</MemoryRouter>,
-		);
+		renderWithClient(<App />, ["/"]);
 
 		await user.click(screen.getByRole("button"));
 		await user.click(screen.getByRole("link", { name: /about/i }));
@@ -110,11 +80,7 @@ describe("Root nav element", () => {
 	});
 
 	it("navigates from Home to About using desktop nav", async () => {
-		render(
-			<MemoryRouter initialEntries={["/"]}>
-				<App />
-			</MemoryRouter>,
-		);
+		renderWithClient(<App />, ["/"]);
 
 		await user.click(screen.getByRole("link", { name: /about/i }));
 		expect(
@@ -123,11 +89,7 @@ describe("Root nav element", () => {
 	});
 
 	it("navigates from About to Tour using mobile nav", async () => {
-		render(
-			<MemoryRouter initialEntries={["/about"]}>
-				<App />
-			</MemoryRouter>,
-		);
+		renderWithClient(<App />, ["/about"]);
 
 		await user.click(screen.getByRole("button"));
 		await user.click(screen.getByRole("link", { name: /model home tour/i }));
@@ -138,11 +100,7 @@ describe("Root nav element", () => {
 	});
 
 	it("navigates from Tour to Home using desktop nav", async () => {
-		render(
-			<MemoryRouter initialEntries={["/homes"]}>
-				<App />
-			</MemoryRouter>,
-		);
+		renderWithClient(<App />, ["/homes"]);
 
 		await user.click(screen.getByRole("link", { name: "Home" }));
 		expect(
@@ -153,11 +111,7 @@ describe("Root nav element", () => {
 	});
 
 	it("navigates from Tour Details to Tour using mobile nav", async () => {
-		render(
-			<MemoryRouter initialEntries={["/homes/1"]}>
-				<App />
-			</MemoryRouter>,
-		);
+		renderWithClient(<App />, ["/homes/1"]);
 
 		await user.click(screen.getByRole("button"));
 		await user.click(screen.getByRole("link", { name: /model home tour/i }));
@@ -168,11 +122,7 @@ describe("Root nav element", () => {
 	});
 
 	it("navigates from Not Found to Home using desktop nav", async () => {
-		render(
-			<MemoryRouter initialEntries={["/bad-route"]}>
-				<App />
-			</MemoryRouter>,
-		);
+		renderWithClient(<App />, ["/bad-route"]);
 
 		await user.click(screen.getByRole("link", { name: "Home" }));
 		expect(
