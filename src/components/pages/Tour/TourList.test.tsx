@@ -4,8 +4,8 @@ import App from "@/App";
 import { renderWithClient } from "@/test/render";
 
 describe("TourList component", () => {
-	it("gets a list of homes", async () => {
-		const user = userEvent.setup();
+	const user = userEvent.setup();
+	it("renders loading component then a list of homes", async () => {
 		renderWithClient(<App />, ["/homes"]);
 
 		expect(screen.getByTestId(/loading-skeleton/i)).toBeInTheDocument();
@@ -19,6 +19,10 @@ describe("TourList component", () => {
 
 		expect(await screen.findByText(/model home #1/i)).toBeInTheDocument();
 		expect(await screen.findByText(/model home #2/i)).toBeInTheDocument();
+	});
+
+	it("renders links that navigate to correct Tour Details page", async () => {
+		renderWithClient(<App />, ["/homes"]);
 
 		await user.click(
 			await screen.findByRole("link", {
