@@ -1,3 +1,5 @@
+import TourList from "@/components/pages/Tour/TourList";
+
 export default function TourPage() {
 	return (
 		<div>
@@ -14,6 +16,7 @@ export default function TourPage() {
 			</section>
 			<section>
 				<h2>Index of Model Homes</h2>
+				<TourList />
 			</section>
 		</div>
 	);

@@ -1,0 +1,37 @@
+import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import App from "@/App";
+import { renderWithClient } from "@/test/render";
+
+describe("TourList component", () => {
+	const user = userEvent.setup();
+	it("renders loading component then a list of homes", async () => {
+		renderWithClient(<App />, ["/homes"]);
+
+		expect(screen.getByTestId(/loading-skeleton/i)).toBeInTheDocument();
+
+		const list = await screen.findByRole("list", {
+			name: /list of model homes/i,
+		});
+
+		expect(list).toBeInTheDocument();
+		expect(list.childElementCount).toBe(2);
+
+		expect(await screen.findByText(/model home #1/i)).toBeInTheDocument();
+		expect(await screen.findByText(/model home #2/i)).toBeInTheDocument();
+	});
+
+	it("renders links that navigate to correct Tour Details page", async () => {
+		renderWithClient(<App />, ["/homes"]);
+
+		await user.click(
+			await screen.findByRole("link", {
+				name: /view model home 1/i,
+			}),
+		);
+
+		expect(
+			screen.getByRole("heading", { name: /model home no. 1/i }),
+		).toBeInTheDocument();
+	});
+});
