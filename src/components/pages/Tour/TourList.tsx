@@ -14,8 +14,6 @@ export default function TourList() {
 		staleTime: 24 * 60 * 60 * 1000, // 1d
 	});
 
-	console.log(isPending, error, data);
-
 	if (isPending) return <Loading />;
 
 	if (error) return "An error occurred.";
@@ -24,9 +22,9 @@ export default function TourList() {
 
 	return (
 		<>
-			<ul>
+			<ul aria-label="List of model homes" className="divide-y">
 				{homes.map((home) => {
-					return <TourListItem key={home.id} />;
+					return <TourListItem key={home.id} home={home} />;
 				})}
 			</ul>
 		</>

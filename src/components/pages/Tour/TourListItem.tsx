@@ -1,37 +1,26 @@
+import { Link } from "react-router";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import {
-	Item,
-	ItemActions,
-	ItemContent,
-	ItemDescription,
-	ItemMedia,
-	ItemTitle,
-} from "@/components/ui/item";
+import type { ModelHome } from "@/types/types";
 
-export default function TourListItem() {
+interface Props {
+	home: ModelHome;
+}
+
+export default function TourListItem({ home }: Props) {
 	return (
-		<Item variant="outline">
-			<ItemMedia>
-				<Avatar className="size-10">
-					<AvatarImage src="https://github.com/evilrabbit.png" />
-					<AvatarFallback>ER</AvatarFallback>
-				</Avatar>
-			</ItemMedia>
-			<ItemContent>
-				<ItemTitle>Evil Rabbit</ItemTitle>
-				<ItemDescription>Last seen 5 months ago</ItemDescription>
-			</ItemContent>
-			<ItemActions>
-				<Button
-					size="icon-sm"
-					variant="outline"
-					className="rounded-full"
-					aria-label="Invite"
-				>
-					Learn More
-				</Button>
-			</ItemActions>
-		</Item>
+		<li>
+			<Link to={`/homes/${home.id}`} aria-label={`View Model Home ${home.id}`}>
+				<div className="flex gap-4 p-4">
+					<Avatar className="size-10">
+						<AvatarImage src="https://github.com/evilrabbit.png" />
+						<AvatarFallback>#{home.id}</AvatarFallback>
+					</Avatar>
+					<div className="flex flex-col">
+						<span>Model Home #{home.id}</span>
+						<span>{home.city}</span>
+					</div>
+				</div>
+			</Link>
+		</li>
 	);
 }

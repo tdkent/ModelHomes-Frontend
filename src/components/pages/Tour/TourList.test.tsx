@@ -1,18 +1,18 @@
 import { screen } from "@testing-library/react";
-import TourList from "@/components/pages/Tour/TourList";
+import userEvent from "@testing-library/user-event";
+import App from "@/App";
 import { renderWithClient } from "@/test/render";
-
-// import userEvent from "@testing-library/user-event";
 
 describe("TourList component", () => {
 	it("gets a list of homes", async () => {
-		// const user = userEvent.setup();
-		renderWithClient(<TourList />, ["/homes"]);
+		const user = userEvent.setup();
+		renderWithClient(<App />, ["/homes"]);
 
-		// Test loading state
 		expect(screen.getByTestId(/loading-skeleton/i)).toBeInTheDocument();
 
-		const list = await screen.findByRole("list"); // nav list will interfere?
+		const list = await screen.findByRole("list", {
+			name: /list of model homes/i,
+		});
 
 		expect(list).toBeInTheDocument();
 		expect(list.childElementCount).toBe(2);
@@ -20,12 +20,14 @@ describe("TourList component", () => {
 		expect(await screen.findByText(/model home #1/i)).toBeInTheDocument();
 		expect(await screen.findByText(/model home #2/i)).toBeInTheDocument();
 
-		// Test navigate to correct Tour Details page
-		// const listItem = await screen.findByText(/model home #1/i);
-		// user.click(listItem);
+		await user.click(
+			await screen.findByRole("link", {
+				name: /view model home 1/i,
+			}),
+		);
 
-		// expect(
-		// 	screen.getByRole("heading", { name: /model home #1/i }),
-		// ).toBeInTheDocument();
+		expect(
+			screen.getByRole("heading", { name: /model home no. 1/i }),
+		).toBeInTheDocument();
 	});
 });
