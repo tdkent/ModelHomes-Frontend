@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import App from "@/App";
 import { renderWithClient } from "@/test/render";
 
-describe("TourList component", () => {
+describe("Tour page", () => {
 	const user = userEvent.setup();
 	it("renders loading component then a list of homes", async () => {
 		renderWithClient(<App />, ["/homes"]);
@@ -31,7 +31,7 @@ describe("TourList component", () => {
 		);
 
 		expect(
-			screen.getByRole("heading", { name: /model home no. 1/i }),
+			screen.getByRole("heading", { name: /model home #1/i }),
 		).toBeInTheDocument();
 	});
 });

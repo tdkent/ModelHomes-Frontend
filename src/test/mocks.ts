@@ -25,6 +25,9 @@ export const handlers = [
 	http.get(`${BACKEND_URL}/homes`, () => {
 		return HttpResponse.json(mockedHomesData);
 	}),
+	http.get(`${BACKEND_URL}/homes/1`, () => {
+		return HttpResponse.json(mockedHomesData[0]);
+	}),
 ];
 
 export const server = setupServer(...handlers);
