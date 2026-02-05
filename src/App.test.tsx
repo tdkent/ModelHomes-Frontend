@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { SITE_NAME } from "@/constants/constants";
 import { renderWithClient } from "@/test/render";
 import App from "./App";
 
@@ -13,7 +14,7 @@ describe("App root layer", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: /Model Homes of the San Francisco International Exposition, 1939-40/i,
+				name: SITE_NAME,
 			}),
 		).toBeInTheDocument();
 	});
@@ -105,7 +106,7 @@ describe("Root nav element", () => {
 		await user.click(screen.getByRole("link", { name: "Home" }));
 		expect(
 			screen.getByRole("heading", {
-				name: /Model Homes of the San Francisco International Exposition, 1939-40/i,
+				name: SITE_NAME,
 			}),
 		).toBeInTheDocument();
 	});
@@ -127,7 +128,7 @@ describe("Root nav element", () => {
 		await user.click(screen.getByRole("link", { name: "Home" }));
 		expect(
 			screen.getByRole("heading", {
-				name: /Model Homes of the San Francisco International Exposition, 1939-40/i,
+				name: SITE_NAME,
 			}),
 		).toBeInTheDocument();
 	});

@@ -11,6 +11,7 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from "@/components/ui/sheet";
+import { SITE_NAME } from "@/constants/constants";
 import type { Link } from "@/types/types";
 
 interface Props {
@@ -30,9 +31,7 @@ export default function MobileNav({ links }: Props) {
 				<SheetContent className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]">
 					<nav>
 						<SheetHeader className="my-12">
-							<SheetTitle>
-								Model Homes of the Golden Gate International Exposition, 1939-40
-							</SheetTitle>
+							<SheetTitle>{SITE_NAME}</SheetTitle>
 							<SheetDescription className="sr-only">
 								Navigation links
 							</SheetDescription>

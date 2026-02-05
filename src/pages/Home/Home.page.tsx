@@ -1,11 +1,10 @@
 import { Link } from "react-router";
+import { SITE_NAME } from "@/constants/constants";
 
 export default function HomePage() {
 	return (
 		<article>
-			<h1>
-				Model Homes of the San Francisco International Exposition, 1939-40
-			</h1>
+			<h1>{SITE_NAME}</h1>
 			<section>
 				<h2>The World's Fair</h2>
 				<p>

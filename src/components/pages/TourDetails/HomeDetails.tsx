@@ -4,6 +4,7 @@ import parse, { type HTMLReactParserOptions } from "html-react-parser";
 import { Link } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import Loading from "@/components/Loading";
+import { INFLATION_MULT } from "@/constants/constants";
 import type { ModelHome } from "@/types/types";
 
 interface Props {
@@ -46,7 +47,7 @@ export default function HomeDetails({ id }: Props) {
 	return (
 		<>
 			<section>
-				<h2>Home Details</h2>
+				<h2>Location</h2>
 				<dl>
 					<div>
 						<dt>City</dt>
@@ -60,11 +61,37 @@ export default function HomeDetails({ id }: Props) {
 						<dt>Neighborhood/District</dt>
 						<dd>{home.neighborhood_district}</dd>
 					</div>
+				</dl>
+			</section>
+			<section>
+				<h2>Architecture</h2>
+				<dl>
 					<div>
 						<dt>Architect</dt>
 						<dd>{home.architect}</dd>
 					</div>
 				</dl>
+			</section>
+			<section>
+				<h2>Valuation</h2>
+				<h3>1939-40</h3>
+				<div>
+					<dt>Original dollar amount</dt>
+					<dd>{home.value_original}</dd>
+				</div>
+				<div>
+					<dt>Adjusted for inflation (2025)</dt>
+					<dd>{home.value_original * INFLATION_MULT}</dd>
+				</div>
+				<h3>2025</h3>
+				<div>
+					<dt>Estimated current value (2025)</dt>
+					<dd>{home.value_current}</dd>
+				</div>
+				<div>
+					<dt>FOVI</dt>
+					<dd>{home.value_current / (home.value_original * INFLATION_MULT)}</dd>
+				</div>
 			</section>
 			<section>{parsedHtml}</section>
 		</>
