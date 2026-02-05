@@ -7,7 +7,13 @@ import { BrowserRouter } from "react-router";
 import GlobalErrorBoundary from "@/GlobalError";
 import App from "./App.tsx";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 1000 * 60 * 60 * 24, // 1d
+		},
+	},
+});
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>

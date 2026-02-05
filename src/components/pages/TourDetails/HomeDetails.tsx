@@ -11,7 +11,6 @@ export default function HomeDetails({ id }: Props) {
 	const { isPending, error, data } = useQuery({
 		queryKey: [`home-${id}`],
 		queryFn: () => httpRequest(`/homes/${id}`),
-		staleTime: 24 * 60 * 60 * 1000, // 1d
 	});
 
 	if (isPending) return <Loading />;
