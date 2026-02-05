@@ -3,6 +3,7 @@ import DOMPurify from "dompurify";
 import parse, { type HTMLReactParserOptions } from "html-react-parser";
 import { Link } from "react-router";
 import httpRequest from "@/api/httpRequest";
+import DisplayError from "@/components/DisplayError";
 import Loading from "@/components/Loading";
 import { INFLATION_MULT } from "@/constants/constants";
 import type { ModelHome } from "@/types/types";
@@ -19,7 +20,7 @@ export default function HomeDetails({ id }: Props) {
 
 	if (isPending) return <Loading />;
 
-	if (error) return "An error occurred.";
+	if (error) return <DisplayError error={error} />;
 
 	const home = data as ModelHome;
 

@@ -2,11 +2,13 @@ import { TriangleAlert } from "lucide-react";
 
 interface Props {
 	error: unknown;
-	msg: string;
 }
 
-export default function DisplayError({ error, msg }: Props) {
+export default function DisplayError({ error }: Props) {
 	console.error(error);
+
+	let errMsg: string = "";
+	if (error instanceof Error) errMsg = error.message;
 
 	return (
 		<div className="border rounded-md border-black/10 w-full max-w-sm p-4 flex flex-col gap-2">
@@ -14,7 +16,7 @@ export default function DisplayError({ error, msg }: Props) {
 				<TriangleAlert />
 				Something went wrong!
 			</div>
-			<div>{msg}</div>
+			<div>{errMsg || "An unknown error occurred"}</div>
 		</div>
 	);
 }

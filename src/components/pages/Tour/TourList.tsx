@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import httpRequest from "@/api/httpRequest";
+import DisplayError from "@/components/DisplayError";
 import Loading from "@/components/Loading";
 import TourListItem from "@/components/pages/Tour/TourListItem";
-// import { BACKEND_URL } from "@/constants/constants";
 import type { ModelHome } from "@/types/types";
 
 export default function TourList() {
@@ -13,7 +13,7 @@ export default function TourList() {
 
 	if (isPending) return <Loading />;
 
-	if (error) return "An error occurred.";
+	if (error) return <DisplayError error={error} />;
 
 	const homes = data as ModelHome[];
 
