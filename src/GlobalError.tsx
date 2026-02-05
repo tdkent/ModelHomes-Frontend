@@ -1,14 +1,6 @@
-import { TriangleAlert } from "lucide-react";
-import { getErrorMessage } from "react-error-boundary";
+import DisplayError from "@/components/DisplayError";
 import { Button } from "@/components/ui/button";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
+import { SITE_NAME } from "@/constants/constants";
 
 interface Props {
 	error: unknown;
@@ -16,27 +8,27 @@ interface Props {
 }
 
 export default function GlobalErrorBoundary({ error, reset }: Props) {
-	const msg = getErrorMessage(error);
-	console.debug("Error message:", msg);
-	console.error(error);
-
 	return (
-		<div className="m-4">
-			<Card role="alert" className="w-full max-w-sm">
-				<CardHeader>
-					<CardTitle className="text-destructive flex items-center gap-2">
-						<TriangleAlert />
-						Something went wrong!
-					</CardTitle>
-					<CardDescription>An unexpected error occurred.</CardDescription>
-				</CardHeader>
-				<CardContent>
-					<p>Please click the Retry button below, or try again later.</p>
-				</CardContent>
-				<CardFooter>
-					<Button onClick={reset}>Retry</Button>
-				</CardFooter>
-			</Card>
-		</div>
+		<>
+			<div className="m-4">
+				<h1>{SITE_NAME}</h1>
+				<div className="w-full max-w-sm my-4 flex flex-col gap-8">
+					<DisplayError error={error} />
+					<div className="flex flex-col gap-4">
+						<p className="text-sm">
+							Please click the Retry button below, or try again later.
+						</p>
+						<Button
+							onClick={reset}
+							size="lg"
+							className="w-fit"
+							variant="secondary"
+						>
+							Retry
+						</Button>
+					</div>
+				</div>
+			</div>
+		</>
 	);
 }
