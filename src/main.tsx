@@ -4,8 +4,8 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter } from "react-router";
+import App from "@/App";
 import GlobalErrorBoundary from "@/GlobalError";
-import App from "./App.tsx";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
