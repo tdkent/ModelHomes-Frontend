@@ -13,5 +13,5 @@ export interface ModelHome {
 	interior_decorator: string;
 	value_original: number;
 	value_current: number;
-	notes: string[];
+	notes: string;
 }
