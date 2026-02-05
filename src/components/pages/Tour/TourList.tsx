@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import httpRequest from "@/api/httpRequest";
 import DisplayError from "@/components/DisplayError";
 import Loading from "@/components/Loading";
+import SortList from "@/components/pages/Tour/SortList";
 import TourListItem from "@/components/pages/Tour/TourListItem";
 import type { ModelHome } from "@/types/types";
 
@@ -19,6 +20,7 @@ export default function TourList() {
 
 	return (
 		<>
+			<SortList />
 			<ul aria-label="List of model homes" className="divide-y">
 				{homes.map((home) => {
 					return <TourListItem key={home.id} home={home} />;
