@@ -31,7 +31,7 @@ describe("Tour page", () => {
 		);
 
 		expect(
-			screen.getByRole("heading", { name: /model home no. 1/i }),
+			screen.getByRole("heading", { name: /model home #1/i }),
 		).toBeInTheDocument();
 	});
 });

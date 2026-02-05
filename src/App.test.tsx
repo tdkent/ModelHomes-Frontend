@@ -35,11 +35,11 @@ describe("App root layer", () => {
 		).toBeInTheDocument();
 	});
 
-	it("renders Tour Details page with correct ID at /homes/5", () => {
-		renderWithClient(<App />, ["/homes/5"]);
+	it("renders Tour Details page with correct ID at /homes/1", () => {
+		renderWithClient(<App />, ["/homes/1"]);
 
 		expect(
-			screen.getByRole("heading", { name: /model home no. 5/i }),
+			screen.getByRole("heading", { name: /model home #1/i }),
 		).toBeInTheDocument();
 	});
 

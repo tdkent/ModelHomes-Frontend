@@ -21,22 +21,12 @@ export const mockedHomesData: Pick<
 	},
 ];
 
-export const mockedSingleHomeData: Pick<
-	ModelHome,
-	"id" | "city" | "county" | "architect"
-> = {
-	id: 8,
-	city: "Millbrae",
-	county: "San Mateo",
-	architect: "Oscar R. Thayer",
-};
-
 export const handlers = [
 	http.get(`${BACKEND_URL}/homes`, () => {
 		return HttpResponse.json(mockedHomesData);
 	}),
-	http.get(`${BACKEND_URL}/homes/8`, () => {
-		return HttpResponse.json(mockedSingleHomeData);
+	http.get(`${BACKEND_URL}/homes/1`, () => {
+		return HttpResponse.json(mockedHomesData[0]);
 	}),
 ];
 
