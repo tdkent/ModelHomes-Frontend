@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import DisplayError from "@/components/DisplayError";
 import Loading from "@/components/Loading";
+import ImageGallery from "@/components/pages/TourDetails/ImageGallery";
 import { INFLATION_MULT } from "@/constants/constants";
 import type { ModelHome } from "@/types/types";
 
@@ -94,7 +95,11 @@ export default function HomeDetails({ id }: Props) {
 					<dd>{home.value_current / (home.value_original * INFLATION_MULT)}</dd>
 				</div>
 			</section>
-			<section>{parsedHtml}</section>
+			<section>
+				<h2>Notes</h2>
+				{parsedHtml}
+			</section>
+			<ImageGallery id={id} gallery={home.images.gallery} city={home.city} />
 		</>
 	);
 }

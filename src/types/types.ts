@@ -14,4 +14,8 @@ export interface ModelHome {
 	value_original: number;
 	value_current: number;
 	notes: string;
+	images: {
+		avatar: string;
+		gallery: string[];
+	};
 }
