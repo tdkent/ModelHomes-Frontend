@@ -7,13 +7,23 @@ interface Props {
 	lazy?: boolean;
 	sizes?: string;
 	isHero?: boolean;
+	position?: string;
 }
 
 /** Responsive picture element loads images based on display/device. */
-export default function Image({ homeId, imageId, lazy, sizes, isHero }: Props) {
+export default function Image({
+	homeId,
+	imageId,
+	lazy,
+	sizes,
+	isHero,
+	position,
+}: Props) {
 	const srcSets = createSrcSets(homeId, imageId);
 	return (
-		<div className={`w-full ${isHero ? "aspect-2/1" : "aspect-auto"}`}>
+		<div
+			className={`w-full overflow-hidden ${isHero ? "aspect-2/1" : "aspect-auto"}`}
+		>
 			<picture className="flex w-full h-full">
 				<source srcSet={srcSets.avif} sizes={sizes} type="image/avif" />
 				<source srcSet={srcSets.webp} sizes={sizes} type="image/webp" />
@@ -22,7 +32,7 @@ export default function Image({ homeId, imageId, lazy, sizes, isHero }: Props) {
 					alt={`Model Home #${homeId}`}
 					sizes={sizes}
 					loading={lazy ? "lazy" : "eager"}
-					className={`object-cover w-full h-auto ${isHero && "blur-xs sepia"}`}
+					className={`object-cover w-full h-auto ${isHero && "blur-xs sepia"} ${position}`}
 				/>
 			</picture>
 		</div>
