@@ -7,13 +7,13 @@ interface Props {
 	city: string;
 }
 
-export default function ImageGallery({ id, gallery, city }: Props) {
+export default function ImageGallery({ id, gallery }: Props) {
 	return (
 		<section>
 			<h2>Image Gallery</h2>
-			<div>
+			<div className="flex flex-col gap-8">
 				{gallery.map((img) => {
-					return <Image homeId={id} imageId={img} city={city} />;
+					return <Image homeId={id} imageId={img} lazy />;
 				})}
 			</div>
 		</section>
