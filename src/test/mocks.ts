@@ -5,19 +5,27 @@ import type { ModelHome } from "@/types/types";
 
 export const mockedHomesData: Pick<
 	ModelHome,
-	"id" | "city" | "county" | "architect"
+	"id" | "city" | "county" | "architect" | "images"
 >[] = [
 	{
 		id: 1,
 		city: "City A",
 		county: "County B",
 		architect: "John Doe",
+		images: {
+			gallery: ["1-1", "1-2"],
+			thumbnail: "1-1",
+		},
 	},
 	{
 		id: 2,
 		city: "Town C",
 		county: "County D",
 		architect: "Jane Smith",
+		images: {
+			gallery: ["2-1", "2-2"],
+			thumbnail: "2-1",
+		},
 	},
 ];
 
