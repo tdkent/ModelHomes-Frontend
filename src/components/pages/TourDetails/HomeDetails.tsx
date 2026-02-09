@@ -3,9 +3,9 @@ import DOMPurify from "dompurify";
 import parse, { type HTMLReactParserOptions } from "html-react-parser";
 import { Link } from "react-router";
 import httpRequest from "@/api/httpRequest";
-import DisplayError from "@/components/DisplayError";
-import Loading from "@/components/Loading";
 import ImageGallery from "@/components/pages/TourDetails/ImageGallery";
+import DisplayError from "@/components/shared/DisplayError";
+import Loading from "@/components/shared/Loading";
 import { INFLATION_MULT } from "@/constants/constants";
 import type { ModelHome } from "@/types/types";
 

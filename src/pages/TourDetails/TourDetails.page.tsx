@@ -13,12 +13,7 @@ export default function TourDetailsPage() {
 		<div>
 			<header>
 				<h1>Model Home #{validId}</h1>
-				<Image
-					homeId={validId}
-					imageId={`${validId}-1`}
-					aspectRatio="video"
-					isHero
-				/>
+				<Image homeId={validId} imageId={`${validId}-1`} isHero />
 			</header>
 			<HomeDetails id={validId} />
 		</div>

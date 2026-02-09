@@ -1,4 +1,4 @@
-import DisplayError from "@/components/DisplayError";
+import DisplayError from "@/components/shared/DisplayError";
 import { Button } from "@/components/ui/button";
 import { SITE_NAME } from "@/constants/constants";
 

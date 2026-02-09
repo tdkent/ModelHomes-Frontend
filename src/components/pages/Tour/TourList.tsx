@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import httpRequest from "@/api/httpRequest";
-import DisplayError from "@/components/DisplayError";
-import Loading from "@/components/Loading";
 import SortList from "@/components/pages/Tour/SortList";
 import TourListItem from "@/components/pages/Tour/TourListItem";
+import DisplayError from "@/components/shared/DisplayError";
+import Loading from "@/components/shared/Loading";
 import sortHomes from "@/helpers/sortHomes";
 import type { ModelHome } from "@/types/types";
 
