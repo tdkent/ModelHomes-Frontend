@@ -20,7 +20,7 @@ export default function TourDetailsPage() {
 					position={objPosition || ""}
 					isHero
 				/>
-				<h1 className="absolute top-1/2 px-4 -translate-y-1/2 text-5xl text-white">
+				<h1 className="absolute top-1/2 px-4 -translate-y-1/2 text-5xl">
 					Model Home #{validId}
 				</h1>
 			</header>

@@ -1,4 +1,4 @@
-import { Image as ImageIcon } from "lucide-react";
+import { ImageOff, LoaderCircle } from "lucide-react";
 import { useState } from "react";
 import { ASSETS_URL } from "@/constants/constants";
 import createSrcSets from "@/helpers/createSrcSet";
@@ -21,31 +21,43 @@ export default function Image({
 	isHero,
 	position,
 }: Props) {
-	const [isLoading, setIsLoading] = useState(true);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(false);
 	const srcSets = createSrcSets(homeId, imageId);
 
-	// Specify aspect ratio to avoid layout shift after load
-	const loadingAspectRatio = isLoading ? "aspect-5/3" : "aspect-auto";
+	// Specify aspect ratio to avoid layout shift after load or error
+	const loadingAspectRatio = loading || error ? "aspect-5/3" : "aspect-auto";
 
 	return (
 		<div
-			className={`w-full overflow-hidden ${isHero ? "aspect-2/1" : loadingAspectRatio}`}
+			className={`w-full overflow-hidden border bg-[#f9f9f9] ${isHero ? "aspect-2/1" : loadingAspectRatio}`}
 		>
-			{isLoading && (
-				<div className="w-full h-full bg-black/5">
-					<ImageIcon className="stroke-white size-12 stroke-1" />
+			{loading && (
+				<div className="flex items-center gap-2 text-sm p-4">
+					<LoaderCircle className="size-6 stroke-1 animate-spin" />
+					Loading...
 				</div>
 			)}
-			<picture className="flex w-full h-full">
+			{error && (
+				<div className="flex items-center gap-2 text-sm p-4">
+					<ImageOff className="size-6 stroke-1" />
+					The image failed to load.
+				</div>
+			)}
+			<picture className={`flex w-full h-full ${error && "hidden"}`}>
 				<source srcSet={srcSets.avif} sizes={sizes} type="image/avif" />
 				<source srcSet={srcSets.webp} sizes={sizes} type="image/webp" />
 				<img
-					src={`${ASSETS_URL}/home-${homeId}/home-${imageId}@1280.jpeg`}
+					src={`${ASSETS_URL}/home-${homeId}/home-${imageId}@1280s.jpeg`}
 					alt={`Model Home #${homeId}`}
 					sizes={sizes}
 					loading={lazy ? "lazy" : "eager"}
 					className={`object-cover w-full h-auto ${isHero && "blur-xs sepia"} ${position}`}
-					onLoad={() => setIsLoading(false)}
+					onLoad={() => setLoading(false)}
+					onError={() => {
+						setLoading(false);
+						setError(true);
+					}}
 				/>
 			</picture>
 		</div>
