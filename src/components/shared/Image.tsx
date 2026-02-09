@@ -1,36 +1,36 @@
 import { ImageOff, LoaderCircle } from "lucide-react";
 import { useState } from "react";
-import { ASSETS_URL } from "@/constants/constants";
-import createSrcSets from "@/helpers/createSrcSet";
+import type { SrcSets } from "@/types/types";
 
 interface Props {
-	homeId: number;
-	imageId: string;
+	altText: string;
+	aspectRatio?: string;
+	imgStyles?: string;
+	imgUrl: string;
 	lazy?: boolean;
 	sizes?: string;
-	isHero?: boolean;
-	position?: string;
+	srcSets: SrcSets;
 }
 
 /** Responsive picture element loads images based on display/device. */
 export default function Image({
-	homeId,
-	imageId,
+	altText,
+	aspectRatio,
+	imgStyles,
+	imgUrl,
 	lazy,
 	sizes,
-	isHero,
-	position,
+	srcSets,
 }: Props) {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
-	const srcSets = createSrcSets(homeId, imageId);
 
-	// Specify aspect ratio to avoid layout shift after load or error
+	// If no AR specify one to avoid layout shift after load or error
 	const loadingAspectRatio = loading || error ? "aspect-5/3" : "aspect-auto";
 
 	return (
 		<div
-			className={`w-full overflow-hidden border bg-[#f9f9f9] ${isHero ? "aspect-2/1" : loadingAspectRatio}`}
+			className={`w-full overflow-hidden border bg-[#f9f9f9] ${aspectRatio || loadingAspectRatio}`}
 		>
 			{loading && (
 				<div className="flex items-center gap-2 text-sm p-4">
@@ -48,11 +48,11 @@ export default function Image({
 				<source srcSet={srcSets.avif} sizes={sizes} type="image/avif" />
 				<source srcSet={srcSets.webp} sizes={sizes} type="image/webp" />
 				<img
-					src={`${ASSETS_URL}/home-${homeId}/home-${imageId}@1280s.jpeg`}
-					alt={`Model Home #${homeId}`}
+					src={imgUrl}
+					alt={altText}
 					sizes={sizes}
 					loading={lazy ? "lazy" : "eager"}
-					className={`object-cover w-full h-auto ${isHero && "blur-xs sepia"} ${position}`}
+					className={`object-cover w-full h-auto ${imgStyles}`}
 					onLoad={() => setLoading(false)}
 					onError={() => {
 						setLoading(false);

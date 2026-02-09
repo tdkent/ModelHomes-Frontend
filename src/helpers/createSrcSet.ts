@@ -1,14 +1,8 @@
-import { ASSETS_URL, IMG_TYPES, IMG_WIDTHS } from "@/constants/constants";
-
-interface SrcSets {
-	avif: string;
-	webp: string;
-}
+import { IMG_TYPES, IMG_WIDTHS } from "@/constants/constants";
+import type { SrcSets } from "@/types/types";
 
 /** Create srcset strings for Image component. */
-export default function createSrcSets(homeId: number, imgId: string) {
-	const baseUrl = `${ASSETS_URL}/home-${homeId}/home-${imgId}`;
-
+export default function createSrcSets(baseUrl: string) {
 	const srcSets: SrcSets = { avif: "", webp: "" };
 
 	for (const format of IMG_TYPES) {

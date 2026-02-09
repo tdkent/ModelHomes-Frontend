@@ -19,3 +19,8 @@ export interface ModelHome {
 		gallery: string[];
 	};
 }
+
+export interface SrcSets {
+	avif: string;
+	webp: string;
+}
