@@ -7,14 +7,12 @@ interface Props {
 
 /**
  * Select element that sorts homes.
- * @param param0
- * @returns
+ * Compose with HTML instead of shadcn to simplify testing.
  */
 export default function SortList({ setSortOption }: Props) {
 	return (
 		<div className="flex items-center gap-2 border my-4 p-4">
 			<label htmlFor="sort-homes">Sort by</label>
-			//? Compose with HTML instead of shadcn to simplify testing.
 			<select
 				id="sort-homes"
 				className="border rounded-md p-2"

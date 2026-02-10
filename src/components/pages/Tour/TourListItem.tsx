@@ -15,7 +15,8 @@ export default function TourListItem({ home }: Props) {
 					<Thumbnail id={id} imgId={home.images.thumbnail} />
 					<div className="flex flex-col">
 						<span>Model Home #{id}</span>
-						<span>{home.city}</span>
+						<span>City: {home.city}</span>
+						<span>County: {home.county}</span>
 					</div>
 				</div>
 			</Link>
