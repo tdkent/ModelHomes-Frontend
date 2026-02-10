@@ -12,6 +12,6 @@ describe("Tour Details page", () => {
 		renderWithClient(<App />, ["/homes/1"]);
 		expect(await screen.findByText(/city a/i)).toBeInTheDocument();
 		expect(await screen.findByText(/county b/i)).toBeInTheDocument();
-		expect(await screen.findByText(/john doe/i)).toBeInTheDocument();
+		expect(await screen.findByText(/art vandelay/i)).toBeInTheDocument();
 	});
 });

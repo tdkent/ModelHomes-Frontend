@@ -11,11 +11,11 @@ describe("Tour page", () => {
 		expect(screen.getByTestId(/loading-skeleton/i)).toBeInTheDocument();
 
 		const list = await screen.findByRole("list", {
-			name: /list of model homes/i,
+			name: /homes/i,
 		});
 
 		expect(list).toBeInTheDocument();
-		expect(list.childElementCount).toBe(2);
+		expect(list.childElementCount).toBe(3);
 
 		expect(await screen.findByText(/model home #1/i)).toBeInTheDocument();
 		expect(await screen.findByText(/model home #2/i)).toBeInTheDocument();
@@ -26,7 +26,7 @@ describe("Tour page", () => {
 
 		await user.click(
 			await screen.findByRole("link", {
-				name: /view model home 1/i,
+				name: /home 1/i,
 			}),
 		);
 

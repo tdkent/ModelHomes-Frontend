@@ -10,7 +10,7 @@ export default function TourListItem({ home }: Props) {
 	const id = home.id;
 	return (
 		<li>
-			<Link to={`/homes/${id}`} aria-label={`View Model Home ${id}`}>
+			<Link to={`/homes/${id}`} aria-label={`Home ${id}`}>
 				<div className="flex gap-4 p-4">
 					<Thumbnail id={id} imgId={home.images.thumbnail} />
 					<div className="flex flex-col">

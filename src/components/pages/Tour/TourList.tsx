@@ -25,7 +25,7 @@ export default function TourList() {
 	return (
 		<>
 			<SortList setSortOption={setSortOption} />
-			<ul aria-label="List of model homes" className="divide-y">
+			<ul aria-label="Homes" className="divide-y">
 				{sorted.map((home) => {
 					return <TourListItem key={home.id} home={home} />;
 				})}
