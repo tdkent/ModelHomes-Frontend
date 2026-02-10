@@ -24,3 +24,6 @@ export interface SrcSets {
 	avif: string;
 	webp: string;
 }
+
+export type SortOptions = "Number" | "City" | "County";
+export const sortOptions = ["Number", "City", "County"] as const;
