@@ -14,4 +14,13 @@ export interface ModelHome {
 	value_original: number;
 	value_current: number;
 	notes: string;
+	images: {
+		thumbnail: string;
+		gallery: string[];
+	};
+}
+
+export interface SrcSets {
+	avif: string;
+	webp: string;
 }
