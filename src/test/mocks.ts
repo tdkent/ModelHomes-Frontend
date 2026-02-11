@@ -9,9 +9,9 @@ export const mockedHomesData: Pick<
 >[] = [
 	{
 		id: 1,
-		city: "City A",
-		county: "County B",
-		architect: "John Doe",
+		city: "City B",
+		county: "County C",
+		architect: "Art Vandelay",
 		images: {
 			gallery: ["1-1", "1-2"],
 			thumbnail: "1-1",
@@ -19,12 +19,22 @@ export const mockedHomesData: Pick<
 	},
 	{
 		id: 2,
-		city: "Town C",
-		county: "County D",
-		architect: "Jane Smith",
+		city: "City C",
+		county: "County A",
+		architect: "A.G. Pennypacker",
 		images: {
 			gallery: ["2-1", "2-2"],
 			thumbnail: "2-1",
+		},
+	},
+	{
+		id: 3,
+		city: "City A",
+		county: "County B",
+		architect: "Kel Varnsen",
+		images: {
+			gallery: ["3-1", "3-2"],
+			thumbnail: "3-1",
 		},
 	},
 ];

@@ -7,6 +7,7 @@ import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import sortHomes from "@/helpers/sortHomes";
 import type { ModelHome } from "@/types/types";
+import { type SortOptions, sortOptions } from "@/types/types";
 
 export default function TourList() {
 	const { isPending, error, data } = useQuery({
@@ -14,7 +15,7 @@ export default function TourList() {
 		queryFn: () => httpRequest("/homes"),
 	});
 
-	const [sortOption, setSortOption] = useState<"id" | "city">("id");
+	const [sortOption, setSortOption] = useState<SortOptions>(sortOptions[0]);
 
 	if (isPending) return <Loading />;
 	if (error) return <DisplayError error={error} />;
@@ -25,7 +26,7 @@ export default function TourList() {
 	return (
 		<>
 			<SortList setSortOption={setSortOption} />
-			<ul aria-label="List of model homes" className="divide-y">
+			<ul aria-label="Homes" className="divide-y">
 				{sorted.map((home) => {
 					return <TourListItem key={home.id} home={home} />;
 				})}
