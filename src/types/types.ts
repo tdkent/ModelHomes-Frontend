@@ -14,4 +14,16 @@ export interface ModelHome {
 	value_original: number;
 	value_current: number;
 	notes: string;
+	images: {
+		thumbnail: string;
+		gallery: string[];
+	};
 }
+
+export interface SrcSets {
+	avif: string;
+	webp: string;
+}
+
+export type SortOptions = "Number" | "City" | "County";
+export const sortOptions = ["Number", "City", "County"] as const;

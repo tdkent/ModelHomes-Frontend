@@ -1,10 +1,10 @@
 import { Link } from "react-router";
-import { SITE_NAME } from "@/constants/constants";
+import Header from "@/components/pages/Home/Header";
 
 export default function HomePage() {
 	return (
 		<article>
-			<h1>{SITE_NAME}</h1>
+			<Header />
 			<section>
 				<h2>The World's Fair</h2>
 				<p>
