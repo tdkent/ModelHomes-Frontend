@@ -4,12 +4,18 @@
 ### JOBS:
 # Generate and upload build files.
 # Push build files to S3.
+# Invalidate CloudFront distribution cache
 
 name: 'Deploy Application'
 on:
   push:
     branches:
       - main
+    paths-ignore: 
+      - ".github/workflows/*"
+      - ".husky/**"
+      - ".gitignore"
+      - "README.md"
 
   workflow_dispatch: 
 
