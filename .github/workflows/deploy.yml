@@ -42,3 +42,35 @@ jobs:
           name: dist-files
           path: dist
           if-no-files-found: error
+    
+  push_dist:
+    needs: create_dist
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Download dist
+        uses: actions/download-artifact@v7
+        with:
+          name: dist-files
+      
+      - name: Output contents
+        run: ls
+      
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v6
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ${{ secrets.AWS_REGION }}
+
+      # - name: Upload artifacts
+      #   run: |
+      #     aws s3 cp ./build/docker-compose.yml s3://${{ secrets.S3_BUCKET }}/
+      #     aws s3 cp ./build/nginx.conf s3://${{ secrets.S3_BUCKET }}/
+      
+      # - name: Read from bucket
+      #   run: |
+      #     aws s3 ls s3://${{ secrets.S3_BUCKET }}
