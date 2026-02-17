@@ -45,7 +45,7 @@ jobs:
 
       - name: Upload dist files
         run: |
-          aws s3 cp ./dist/index.html s3://${{ secrets.S3_BUCKET }}/
+          aws s3 cp ./dist/ s3://${{ secrets.S3_BUCKET }}/ --recursive
       
       - name: Read from bucket
         run: |
