@@ -1,8 +1,10 @@
 # Model Homes of the Golden Gate International Exposition, 1939-40
 
-This documentation is for the **React frontend** of [ggiemh.com](https://ggiemh.com).
+> This documentation is for the **React frontend** of [ggiemh.com](https://ggiemh.com).
 
 ## About
+
+### Description
 
 `ggiemh.com` is a content-driven website that documents the rediscovered "model homes" built around the San Francisco Bay Area for the Model Home project of the Golden Gate International Exposition, a World's Fair held on Treasure Island in 1939-40. This application emphasizes solid architecture, reliability testing, improved performance via caching, and automated cloud deployment.
 
@@ -111,3 +113,7 @@ Images are cached and served via CloudFront CDN.
 
 While image data loads, placeholder "Loading..." elements provide continuity and prevent layout shift.
 
+## Additional Information
+
+- [Backend repository](https://github.com/tdkent/ggiemh-backend)
+- [Visit ggiemh.com](https://ggiemh.com)
