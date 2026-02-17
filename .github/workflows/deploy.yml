@@ -17,9 +17,6 @@ jobs:
   create_dist:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-
     steps:
       - name: Get code
         uses: actions/checkout@v6
