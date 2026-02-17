@@ -1,39 +1,25 @@
-name: 'Deploy Frontend Application'
-on: 
-  pull_request:
-    types:
-      - opened
-      - edited
-    paths-ignore: 
-      - ".github/workflows/*"
-      - "README.md"
-  
-  workflow_dispatch:
-    
+### RUN ON: 
+# Push to main branch (after PR merge).
+
+### JOBS:
+# Generate and upload build files.
+# Push build files to S3.
+
+name: 'Deploy Application'
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch: 
+
 jobs:
-  lint:
-    runs-on: 'ubuntu-latest'
-    steps:
-      - name: Get code
-        uses: actions/checkout@v6
+  create_dist:
+    runs-on: ubuntu-latest
 
-      - name: Cache deps
-        uses: actions/cache@v5
-        with:
-          path: ~/.npm
-          # Creates a new key when package-lock.json is updated
-          # When a new key is found, GHA will update the cache
-          key: deps-node-module-${{ hashFiles('**/package-lock.json') }}
-      
-      - name: Install deps
-        run: npm ci
-      
-      - name: Lint code
-        run: npm run lint
-    
-  test:
-    needs: lint
-    runs-on: 'ubuntu-latest'
+    permissions:
+      contents: read
+
     steps:
       - name: Get code
         uses: actions/checkout@v6
@@ -43,9 +29,16 @@ jobs:
         with:
           path: ~/.npm
           key: deps-node-module-${{ hashFiles('**/package-lock.json') }}
-
+      
       - name: Install deps
         run: npm ci
+
+      - name: Create dist
+        run: npm run build
       
-      - name: Test code
-        run: npm run test
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: dist-files
+          path: dist
+          if-no-files-found: error
