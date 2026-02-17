@@ -17,6 +17,9 @@ jobs:
   create_dist:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+
     steps:
       - name: Get code
         uses: actions/checkout@v6
@@ -47,8 +50,8 @@ jobs:
         run: |
           aws s3 cp ./dist/ s3://${{ secrets.S3_BUCKET }}/ --recursive
       
-      - name: Read from bucket
+      - name: Invalidate CloudFront cache
         run: |
-          aws s3 ls s3://${{ secrets.S3_BUCKET }}
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
       
 
