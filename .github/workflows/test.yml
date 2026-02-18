@@ -14,6 +14,7 @@ on:
     paths-ignore: 
       - ".github/workflows/*"
       - ".husky/**"
+      - "public/**"
       - ".gitignore"
       - "README.md"
   
