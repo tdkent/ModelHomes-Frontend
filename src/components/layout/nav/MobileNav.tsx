@@ -25,7 +25,7 @@ export default function MobileNav({ links }: Props) {
 			<Sheet>
 				<SheetTrigger asChild>
 					<Button className="" variant="ghost">
-						<Menu className="size-6 stroke-1" />
+						<Menu className="size-6 stroke-2" />
 					</Button>
 				</SheetTrigger>
 				<SheetContent className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]">

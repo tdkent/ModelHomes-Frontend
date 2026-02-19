@@ -1,10 +1,8 @@
 import { Link } from "react-router";
-import Header from "@/components/pages/Home/Header";
 
 export default function HomePage() {
 	return (
 		<article>
-			<Header />
 			<section>
 				<h2>The World's Fair</h2>
 				<p>
