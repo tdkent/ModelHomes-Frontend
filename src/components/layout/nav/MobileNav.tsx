@@ -24,8 +24,8 @@ export default function MobileNav({ links }: Props) {
 		<div className="flex flex-wrap gap-2 sm:hidden">
 			<Sheet>
 				<SheetTrigger asChild>
-					<Button variant="outline" size="icon">
-						<Menu />
+					<Button className="" variant="ghost">
+						<Menu className="size-6 stroke-1" />
 					</Button>
 				</SheetTrigger>
 				<SheetContent className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]">
