@@ -108,12 +108,28 @@
     @apply text-[28px];
   }
 
+  h3 {
+    @apply text-xl
+  }
+
   p {
     @apply leading-7;
   }
 
   a {
     @apply text-blue-600;
+  }
+
+  dl {
+    @apply flex flex-col gap-4;
+  }
+
+  dt {
+    @apply text-base;
+  }
+
+  dd {
+    @apply text-xl;
   }
 
   .content {
