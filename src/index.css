@@ -120,6 +120,10 @@
     @apply text-blue-600;
   }
 
+  nav a {
+    @apply text-foreground;
+  }
+
   dl {
     @apply flex flex-col gap-4;
   }
