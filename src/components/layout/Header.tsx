@@ -19,9 +19,8 @@ export default function Header() {
 					{isHome && (
 						<div className="flex mt-28 h-full px-4">
 							<h1 className="bg-linear-to-r from-yellow-100 to-blue-200 bg-clip-text text-transparent text-[44px] font-sans font-bold leading-12 opacity-90">
-								Model Homes
-								<span className="text-3xl block my-2">of the</span>
-								Golden Gate International Exposition
+								Model Homes <span className="text-3xl block my-2">of the</span>{" "}
+								Golden Gate International Exposition{" "}
 								<span className="text-3xl block mt-4">1939-40</span>
 							</h1>
 						</div>
