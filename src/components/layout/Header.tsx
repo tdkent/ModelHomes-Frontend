@@ -13,12 +13,12 @@ export default function Header() {
 					<div
 						className={`px-4 py-3 flex items-center justify-between ${isHome ? "text-background" : "text-foreground border-b"}`}
 					>
-						<div className="font-heading text-xl">g.g.i.e. model homes</div>
+						<div className="font-sans text-xl">g.g.i.e. model homes</div>
 						<Navigation />
 					</div>
 					{isHome && (
 						<div className="flex mt-28 h-full px-4">
-							<h1 className="bg-linear-to-r from-yellow-100 to-blue-200 bg-clip-text text-transparent text-[44px] font-heading font-bold leading-12 opacity-90">
+							<h1 className="bg-linear-to-r from-yellow-100 to-blue-200 bg-clip-text text-transparent text-[44px] font-sans font-bold leading-12 opacity-90">
 								Model Homes
 								<span className="text-3xl block my-2">of the</span>
 								Golden Gate International Exposition

@@ -1,11 +1,12 @@
 import TourList from "@/components/pages/Tour/TourList";
+import TextHeading from "@/components/shared/TextHeader";
 
 export default function TourPage() {
 	return (
-		<div>
+		<div className="page-container">
 			<h1>Model Home Tour</h1>
 			<section>
-				<h2>Introduction</h2>
+				<TextHeading element="h2" text="Introduction" />
 				<p>
 					Twenty-eight homes are included in this tour, numbered from 1 to 30.
 					There were no homes designated #13 (superstition?) or #22 (who
@@ -15,7 +16,7 @@ export default function TourPage() {
 				</p>
 			</section>
 			<section>
-				<h2>Index of Model Homes</h2>
+				<TextHeading element="h2" text="Index of Model Homes" />
 				<TourList />
 			</section>
 		</div>

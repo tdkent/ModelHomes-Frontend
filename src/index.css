@@ -3,8 +3,8 @@
 @import "tw-animate-css";
 
 @theme {
-  --font-heading: "Poppins", sans-serif;
-  --font-body: "Lora", serif;
+  --font-sans: "Poppins", sans-serif;
+  --font-serif: "Lora", serif;
 }
 
 @theme inline {
@@ -88,10 +88,11 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-slate-800 font-body text-[18px];
+    @apply bg-background text-slate-800 font-serif text-[18px];
   }
 
-  article {
+  article,
+  .page-container {
     @apply flex flex-col gap-10;
   }
 
@@ -108,7 +109,7 @@
   }
 
   p {
-    @apply leading-6;
+    @apply leading-7;
   }
 
   a {
