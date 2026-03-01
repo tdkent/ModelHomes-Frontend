@@ -1,13 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
 import DOMPurify from "dompurify";
 import parse, { type HTMLReactParserOptions } from "html-react-parser";
+import { CircleQuestionMark } from "lucide-react";
 import { Link } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import ImageGallery from "@/components/pages/TourDetails/ImageGallery";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import TextHeading from "@/components/shared/TextHeader";
-import { INFLATION_MULT } from "@/constants/constants";
+import { Button } from "@/components/ui/button";
+import {
+	Popover,
+	PopoverContent,
+	PopoverDescription,
+	PopoverHeader,
+	PopoverTitle,
+	PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+	calculateFOVI,
+	convertToUSD,
+	inflatedValueUSD,
+} from "@/lib/saleValues";
 import type { ModelHome } from "@/types/types";
 
 interface Props {
@@ -33,8 +47,8 @@ export default function HomeDetails({ id }: Props) {
 		images,
 		neighborhood_district: neighDistrict,
 		notes,
-		value_current: valCurr,
-		value_original: valOrig,
+		value_current: currVal,
+		value_original: origVal,
 	} = home;
 
 	const html = DOMPurify.sanitize(notes, {
@@ -90,24 +104,44 @@ export default function HomeDetails({ id }: Props) {
 				<TextHeading element="h2" text="Valuation" />
 				<div>
 					<dt>Original sale value (1939-40)</dt>
-					<dd className={`${!valOrig && "italic"}`}>
-						{valOrig ?? "No info available"}
+					<dd className={`${!origVal && "italic"}`}>
+						{origVal ? convertToUSD(origVal) : "No info available"}
 					</dd>
 				</div>
 				<div>
 					<dt>Original value, inflation adjusted (2025)</dt>
-					<dd className={`${!valOrig && "italic"}`}>
-						{valOrig ? valOrig * INFLATION_MULT : "N/a"}
+					<dd className={`${!origVal && "italic"}`}>
+						{origVal ? inflatedValueUSD(origVal) : "N/a"}
 					</dd>
 				</div>
 				<div>
 					<dt>Current sale value (estimated)</dt>
-					<dd>{valCurr}</dd>
+					<dd>{convertToUSD(currVal)}</dd>
 				</div>
 				<div>
-					<dt>FOVI</dt>
-					<dd className={`${!valOrig && "italic"}`}>
-						{valOrig ? valCurr / (valOrig * INFLATION_MULT) : "N/a"}
+					<dt className="flex items-center">
+						FOVI
+						<Popover>
+							<PopoverTrigger asChild>
+								<Button variant="ghost">
+									<CircleQuestionMark />
+								</Button>
+							</PopoverTrigger>
+							<PopoverContent>
+								<PopoverHeader>
+									<PopoverTitle>What is FOVI?</PopoverTitle>
+									<PopoverDescription>
+										FOVI is a metric is obtained by dividing the home value as
+										of 1 January, 2025 by the inflation-adjusted asking price in
+										1939/40. For example, a FOVI of 10 means the value has
+										increased ten times.
+									</PopoverDescription>
+								</PopoverHeader>
+							</PopoverContent>
+						</Popover>
+					</dt>
+					<dd className={`${!origVal && "italic"}`}>
+						{origVal ? calculateFOVI(origVal, currVal) : "N/a"}
 					</dd>
 				</div>
 			</section>
