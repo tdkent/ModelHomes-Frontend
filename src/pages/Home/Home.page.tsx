@@ -5,7 +5,7 @@ export default function HomePage() {
 	return (
 		<article>
 			<section>
-				<TextHeading text="The World's Fair" />
+				<TextHeading element="h2" text="The World's Fair" />
 				<p>
 					The Golden Gate International Exposition was a Worlds Fair which ran
 					from February 18 through October 29 of 1939 and May 25 through
@@ -22,7 +22,7 @@ export default function HomePage() {
 				</p>
 			</section>
 			<section>
-				<TextHeading text="The Model Home Tour" />
+				<TextHeading element="h2" text="The Model Home Tour" />
 				<p>
 					One of the promotional schemes associated with the Exposition was the
 					Model Home Tour. By 1939 the worst of the Great Depression was over
@@ -43,7 +43,7 @@ export default function HomePage() {
 				</p>
 			</section>
 			<section>
-				<TextHeading text="The Architects" />
+				<TextHeading element="h2" text="The Architects" />
 				<p>
 					These homes were not intended to be "great" architecture, although
 					some were designed by men of international repute, e.g. William

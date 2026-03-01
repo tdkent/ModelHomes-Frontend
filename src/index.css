@@ -91,8 +91,16 @@
     @apply bg-background text-slate-800 font-body text-[18px];
   }
 
+  article {
+    @apply flex flex-col gap-10;
+  }
+
   section {
-    @apply flex flex-col gap-4 my-10 text-pretty;
+    @apply flex flex-col gap-6 text-pretty;
+  }
+
+  h1 {
+    @apply text-[32px];
   }
 
   h2 {

@@ -1,7 +1,9 @@
+import TextHeading from "@/components/shared/TextHeader";
+
 export default function AboutPage() {
 	return (
-		<article>
-			<h1>About this website</h1>
+		<section>
+			<TextHeading element="h1" text="About this website" />
 			<p>
 				My wife and I enjoy self-guided walking tours, whether they be nature
 				treks, historical strolls, or architectural sojourns. Back in 2007 we
@@ -19,6 +21,6 @@ export default function AboutPage() {
 				to locate, even with what was often somewhat sketchy information.
 			</p>
 			<p>This website is the result of our research and exploration.</p>
-		</article>
+		</section>
 	);
 }
