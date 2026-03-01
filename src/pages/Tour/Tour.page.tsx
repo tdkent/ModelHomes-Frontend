@@ -3,7 +3,7 @@ import TextHeading from "@/components/shared/TextHeader";
 
 export default function TourPage() {
 	return (
-		<div className="page-container">
+		<div className="content flex flex-col gap-10">
 			<h1>Model Home Tour</h1>
 			<section>
 				<TextHeading element="h2" text="Introduction" />

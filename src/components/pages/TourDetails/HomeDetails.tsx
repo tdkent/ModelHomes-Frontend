@@ -47,7 +47,7 @@ export default function HomeDetails({ id }: Props) {
 	const parsedHtml = parse(html, options);
 
 	return (
-		<>
+		<div className="content">
 			<section>
 				<h2>Location</h2>
 				<dl>
@@ -100,6 +100,6 @@ export default function HomeDetails({ id }: Props) {
 				{parsedHtml}
 			</section>
 			<ImageGallery id={id} gallery={home.images.gallery} city={home.city} />
-		</>
+		</div>
 	);
 }

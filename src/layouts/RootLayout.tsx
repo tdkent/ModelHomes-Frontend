@@ -6,7 +6,7 @@ export default function RootLayout() {
 		<>
 			<div>
 				<Header />
-				<main className="mx-4 my-10">
+				<main>
 					<Outlet />
 				</main>
 				<Footer />

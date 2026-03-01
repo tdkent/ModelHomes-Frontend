@@ -115,4 +115,8 @@
   a {
     @apply text-blue-600;
   }
+
+  .content {
+    @apply mx-4 my-10;
+  }
 }
