@@ -91,7 +91,19 @@
     @apply bg-background text-slate-800 font-body text-[18px];
   }
 
+  section {
+    @apply flex flex-col gap-4 my-10 text-pretty;
+  }
+
   h2 {
     @apply text-[28px];
+  }
+
+  p {
+    @apply leading-6;
+  }
+
+  a {
+    @apply text-blue-600;
   }
 }
