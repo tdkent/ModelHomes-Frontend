@@ -1,12 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import DOMPurify from "dompurify";
 import parse, { type HTMLReactParserOptions } from "html-react-parser";
+import { CircleQuestionMark } from "lucide-react";
 import { Link } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import ImageGallery from "@/components/pages/TourDetails/ImageGallery";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import TextHeading from "@/components/shared/TextHeader";
+import { Button } from "@/components/ui/button";
+import {
+	Popover,
+	PopoverContent,
+	PopoverDescription,
+	PopoverHeader,
+	PopoverTitle,
+	PopoverTrigger,
+} from "@/components/ui/popover";
 import {
 	calculateFOVI,
 	convertToUSD,
@@ -109,7 +119,27 @@ export default function HomeDetails({ id }: Props) {
 					<dd>{convertToUSD(currVal)}</dd>
 				</div>
 				<div>
-					<dt>FOVI</dt>
+					<dt className="flex items-center">
+						FOVI
+						<Popover>
+							<PopoverTrigger asChild>
+								<Button variant="ghost">
+									<CircleQuestionMark />
+								</Button>
+							</PopoverTrigger>
+							<PopoverContent>
+								<PopoverHeader>
+									<PopoverTitle>What is FOVI?</PopoverTitle>
+									<PopoverDescription>
+										FOVI is a metric is obtained by dividing the home value as
+										of 1 January, 2025 by the inflation-adjusted asking price in
+										1939/40. For example, a FOVI of 10 means the value has
+										increased ten times.
+									</PopoverDescription>
+								</PopoverHeader>
+							</PopoverContent>
+						</Popover>
+					</dt>
 					<dd className={`${!origVal && "italic"}`}>
 						{origVal ? calculateFOVI(origVal, currVal) : "N/a"}
 					</dd>
