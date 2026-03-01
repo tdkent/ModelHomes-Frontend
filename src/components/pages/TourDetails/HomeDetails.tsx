@@ -7,7 +7,11 @@ import ImageGallery from "@/components/pages/TourDetails/ImageGallery";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import TextHeading from "@/components/shared/TextHeader";
-import { INFLATION_MULT } from "@/constants/constants";
+import {
+	calculateFOVI,
+	convertToUSD,
+	inflatedValueUSD,
+} from "@/lib/saleValues";
 import type { ModelHome } from "@/types/types";
 
 interface Props {
@@ -33,8 +37,8 @@ export default function HomeDetails({ id }: Props) {
 		images,
 		neighborhood_district: neighDistrict,
 		notes,
-		value_current: valCurr,
-		value_original: valOrig,
+		value_current: currVal,
+		value_original: origVal,
 	} = home;
 
 	const html = DOMPurify.sanitize(notes, {
@@ -90,24 +94,24 @@ export default function HomeDetails({ id }: Props) {
 				<TextHeading element="h2" text="Valuation" />
 				<div>
 					<dt>Original sale value (1939-40)</dt>
-					<dd className={`${!valOrig && "italic"}`}>
-						{valOrig ?? "No info available"}
+					<dd className={`${!origVal && "italic"}`}>
+						{origVal ? convertToUSD(origVal) : "No info available"}
 					</dd>
 				</div>
 				<div>
 					<dt>Original value, inflation adjusted (2025)</dt>
-					<dd className={`${!valOrig && "italic"}`}>
-						{valOrig ? valOrig * INFLATION_MULT : "N/a"}
+					<dd className={`${!origVal && "italic"}`}>
+						{origVal ? inflatedValueUSD(origVal) : "N/a"}
 					</dd>
 				</div>
 				<div>
 					<dt>Current sale value (estimated)</dt>
-					<dd>{valCurr}</dd>
+					<dd>{convertToUSD(currVal)}</dd>
 				</div>
 				<div>
 					<dt>FOVI</dt>
-					<dd className={`${!valOrig && "italic"}`}>
-						{valOrig ? valCurr / (valOrig * INFLATION_MULT) : "N/a"}
+					<dd className={`${!origVal && "italic"}`}>
+						{origVal ? calculateFOVI(origVal, currVal) : "N/a"}
 					</dd>
 				</div>
 			</section>
