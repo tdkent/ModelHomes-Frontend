@@ -1,6 +1,5 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { SITE_NAME } from "@/constants/constants";
 import { renderWithClient } from "@/test/render";
 import App from "./App";
 
@@ -14,7 +13,19 @@ describe("App root layer", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: SITE_NAME,
+				name: "The World's Fair",
+			}),
+		).toBeInTheDocument();
+
+		expect(
+			screen.getByRole("heading", {
+				name: "The Model Home Tour",
+			}),
+		).toBeInTheDocument();
+
+		expect(
+			screen.getByRole("heading", {
+				name: "The Architects",
 			}),
 		).toBeInTheDocument();
 	});
@@ -104,9 +115,22 @@ describe("Root nav element", () => {
 		renderWithClient(<App />, ["/homes"]);
 
 		await user.click(screen.getByRole("link", { name: "Home" }));
+
 		expect(
 			screen.getByRole("heading", {
-				name: SITE_NAME,
+				name: "The World's Fair",
+			}),
+		).toBeInTheDocument();
+
+		expect(
+			screen.getByRole("heading", {
+				name: "The Model Home Tour",
+			}),
+		).toBeInTheDocument();
+
+		expect(
+			screen.getByRole("heading", {
+				name: "The Architects",
 			}),
 		).toBeInTheDocument();
 	});
@@ -126,9 +150,22 @@ describe("Root nav element", () => {
 		renderWithClient(<App />, ["/bad-route"]);
 
 		await user.click(screen.getByRole("link", { name: "Home" }));
+
 		expect(
 			screen.getByRole("heading", {
-				name: SITE_NAME,
+				name: "The World's Fair",
+			}),
+		).toBeInTheDocument();
+
+		expect(
+			screen.getByRole("heading", {
+				name: "The Model Home Tour",
+			}),
+		).toBeInTheDocument();
+
+		expect(
+			screen.getByRole("heading", {
+				name: "The Architects",
 			}),
 		).toBeInTheDocument();
 	});

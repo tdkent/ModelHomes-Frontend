@@ -15,20 +15,20 @@ export default function TourDetailsPage() {
 	const srcSets = createSrcSets(baseUrl);
 
 	return (
-		<div>
+		<article className="gap-4">
 			<header className="relative">
 				<Image
 					altText={`Model Home #${validId}`}
 					aspectRatio="aspect-2/1"
-					imgStyles="sepia blur-xs"
+					imgStyles="blur-[3px] scale-105"
 					imgUrl={`${baseUrl}@1280s.jpeg`}
 					srcSets={srcSets}
 				/>
-				<h1 className="absolute top-1/2 px-4 -translate-y-1/2 text-5xl">
+				<h1 className="absolute top-1/2 px-4 -translate-y-1/2 font-sans text-3xl text-background text-shadow-lg">
 					Model Home #{validId}
 				</h1>
 			</header>
 			<HomeDetails id={validId} />
-		</div>
+		</article>
 	);
 }

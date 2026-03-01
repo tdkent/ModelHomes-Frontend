@@ -6,6 +6,7 @@ import httpRequest from "@/api/httpRequest";
 import ImageGallery from "@/components/pages/TourDetails/ImageGallery";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
+import TextHeading from "@/components/shared/TextHeader";
 import { INFLATION_MULT } from "@/constants/constants";
 import type { ModelHome } from "@/types/types";
 
@@ -25,7 +26,18 @@ export default function HomeDetails({ id }: Props) {
 
 	const home = data as ModelHome;
 
-	const html = DOMPurify.sanitize(home.notes, {
+	const {
+		architect,
+		city,
+		county,
+		images,
+		neighborhood_district: neighDistrict,
+		notes,
+		value_current: valCurr,
+		value_original: valOrig,
+	} = home;
+
+	const html = DOMPurify.sanitize(notes, {
 		USE_PROFILES: { html: true },
 	});
 
@@ -47,59 +59,63 @@ export default function HomeDetails({ id }: Props) {
 	const parsedHtml = parse(html, options);
 
 	return (
-		<>
+		<div className="content flex flex-col gap-10">
 			<section>
-				<h2>Location</h2>
+				<TextHeading element="h2" text="Location" />
 				<dl>
 					<div>
 						<dt>City</dt>
-						<dd>{home.city}</dd>
+						<dd>{city}</dd>
 					</div>
 					<div>
 						<dt>County</dt>
-						<dd>{home.county}</dd>
+						<dd>{county}</dd>
 					</div>
 					<div>
 						<dt>Neighborhood/District</dt>
-						<dd>{home.neighborhood_district}</dd>
+						<dd>{neighDistrict}</dd>
 					</div>
 				</dl>
 			</section>
 			<section>
-				<h2>Architecture</h2>
+				<TextHeading element="h2" text="Architecture" />
 				<dl>
 					<div>
 						<dt>Architect</dt>
-						<dd>{home.architect}</dd>
+						<dd>{architect}</dd>
 					</div>
 				</dl>
 			</section>
 			<section>
-				<h2>Valuation</h2>
-				<h3>1939-40</h3>
+				<TextHeading element="h2" text="Valuation" />
 				<div>
-					<dt>Original dollar amount</dt>
-					<dd>{home.value_original}</dd>
+					<dt>Original sale value (1939-40)</dt>
+					<dd className={`${!valOrig && "italic"}`}>
+						{valOrig ?? "No info available"}
+					</dd>
 				</div>
 				<div>
-					<dt>Adjusted for inflation (2025)</dt>
-					<dd>{home.value_original * INFLATION_MULT}</dd>
+					<dt>Original value, inflation adjusted (2025)</dt>
+					<dd className={`${!valOrig && "italic"}`}>
+						{valOrig ? valOrig * INFLATION_MULT : "N/a"}
+					</dd>
 				</div>
-				<h3>2025</h3>
 				<div>
-					<dt>Estimated current value (2025)</dt>
-					<dd>{home.value_current}</dd>
+					<dt>Current sale value (estimated)</dt>
+					<dd>{valCurr}</dd>
 				</div>
 				<div>
 					<dt>FOVI</dt>
-					<dd>{home.value_current / (home.value_original * INFLATION_MULT)}</dd>
+					<dd className={`${!valOrig && "italic"}`}>
+						{valOrig ? valCurr / (valOrig * INFLATION_MULT) : "N/a"}
+					</dd>
 				</div>
 			</section>
 			<section>
-				<h2>Notes</h2>
+				<TextHeading element="h2" text="Notes" />
 				{parsedHtml}
 			</section>
-			<ImageGallery id={id} gallery={home.images.gallery} city={home.city} />
-		</>
+			<ImageGallery id={id} gallery={images.gallery} city={home.city} />
+		</div>
 	);
 }

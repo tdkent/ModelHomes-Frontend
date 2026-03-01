@@ -11,7 +11,6 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from "@/components/ui/sheet";
-import { SITE_NAME } from "@/constants/constants";
 import type { Link } from "@/types/types";
 
 interface Props {
@@ -24,28 +23,31 @@ export default function MobileNav({ links }: Props) {
 		<div className="flex flex-wrap gap-2 sm:hidden">
 			<Sheet>
 				<SheetTrigger asChild>
-					<Button variant="outline" size="icon">
-						<Menu />
+					<Button variant="ghost">
+						<Menu className="size-6 stroke-2" />
 					</Button>
 				</SheetTrigger>
-				<SheetContent className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]">
+				<SheetContent className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh] font-sans px-2">
 					<nav>
-						<SheetHeader className="my-12">
-							<SheetTitle>{SITE_NAME}</SheetTitle>
+						<SheetHeader className="my-6 w-4/5">
+							<SheetTitle className="text-base">
+								Model Homes of the San Francisco International Exposition,
+								1939-40
+							</SheetTitle>
 							<SheetDescription className="sr-only">
 								Navigation links
 							</SheetDescription>
 						</SheetHeader>
-						<ul className="no-scrollbar overflow-y-auto px-4">
+						<ul className="no-scrollbar overflow-y-auto divide-y">
 							{links.map((link) => {
 								return (
-									<li key={link.label}>
+									<li key={link.label} className="">
 										<Item>
 											<SheetClose asChild>
 												<NavLink to={link.href} className="w-full">
 													<ItemContent className="flex items-center justify-between">
 														<ItemTitle>{link.label}</ItemTitle>
-														<ChevronRightIcon className="size-5" />
+														<ChevronRightIcon className="size-4 text-blue-600" />
 													</ItemContent>
 												</NavLink>
 											</SheetClose>

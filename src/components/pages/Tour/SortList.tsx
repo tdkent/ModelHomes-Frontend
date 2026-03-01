@@ -11,11 +11,11 @@ interface Props {
  */
 export default function SortList({ setSortOption }: Props) {
 	return (
-		<div className="flex items-center gap-2 border my-4 p-4">
+		<div className="flex items-center gap-2 border rounded-lg bg-slate-50 my-4 px-4 py-2.5">
 			<label htmlFor="sort-homes">Sort by</label>
 			<select
 				id="sort-homes"
-				className="border rounded-md p-2"
+				className="border rounded-md p-2 bg-background"
 				defaultValue={sortOptions[0]}
 				onChange={(e) => setSortOption(e.currentTarget.value as SortOptions)}
 			>
