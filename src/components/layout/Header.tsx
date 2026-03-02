@@ -6,7 +6,7 @@ export default function Header() {
 	// const isHome = pathname === "/";
 	return (
 		<>
-			<header className="flex items-center justify-between z-50 w-full min-h-16 px-4 bg-green-500">
+			<header className="flex items-center justify-between z-50 w-full min-h-16 px-4 bg-transparent">
 				<div className="font-sans text-xl">g.g.i.e. model homes</div>
 				<Navigation />
 			</header>

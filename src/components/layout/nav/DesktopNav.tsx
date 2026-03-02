@@ -6,18 +6,14 @@ import {
 	NavigationMenuList,
 	navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import type { Link } from "@/types/types";
-
-interface Props {
-	links: Link[];
-}
+import { navLinks } from "@/lib/navLinks";
 
 /** Render list of navigation links. */
-export default function DesktopNav({ links }: Props) {
+export default function DesktopNav() {
 	return (
 		<NavigationMenu className="max-sm:hidden">
 			<NavigationMenuList>
-				{links.map((link) => {
+				{navLinks.map((link) => {
 					return (
 						<NavigationMenuItem key={link.label}>
 							<NavigationMenuLink
