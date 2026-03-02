@@ -1,5 +1,5 @@
 import { ChevronRightIcon, Menu } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 // import { NavLink } from "react-router";
 import { Button } from "@/components/ui/button";
@@ -24,6 +24,13 @@ export default function MobileNav({ links }: Props) {
 	const [showShelf, setShowShelf] = useState(false);
 
 	const container = document.querySelector("#container") as Element;
+
+	useEffect(() => {
+		if (container) {
+			if (showShelf) container.classList.add("fixed");
+			else container.classList.remove("fixed");
+		}
+	}, [container, showShelf]);
 
 	return (
 		<>
@@ -82,8 +89,7 @@ export default function MobileNav({ links }: Props) {
 function ShelfContent({ onClose }) {
 	return (
 		<div className="fixed top-0 right bg-white w-full h-screen z-40">
-			<div>I'm a modal dialog</div>
-			{/* <button onClick={onClose}>Close</button> */}
+			<div className="w-full h-full mt-16 flex-1 bg-purple-500">content</div>
 		</div>
 	);
 }
