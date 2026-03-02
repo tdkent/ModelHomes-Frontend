@@ -1,12 +1,16 @@
-import { useLocation } from "react-router";
+// import { useLocation } from "react-router";
 import Navigation from "@/components/layout/Navigation";
 
 export default function Header() {
-	const { pathname } = useLocation();
-	const isHome = pathname === "/";
+	// const { pathname } = useLocation();
+	// const isHome = pathname === "/";
 	return (
 		<>
-			<header
+			<header className="flex items-center justify-between z-50 w-full min-h-16 px-4 bg-green-500">
+				<div className="font-sans text-xl">g.g.i.e. model homes</div>
+				<Navigation />
+			</header>
+			{/* <header
 				className={`${isHome && "bg-[url(/img/ggie-ti-postcard@1280.jpeg)] bg-position-[35%_center] bg-no-repeat bg-cover w-full h-screen"}`}
 			>
 				<div className="w-full h-full backdrop-blur-[2px]">
@@ -26,7 +30,7 @@ export default function Header() {
 						</div>
 					)}
 				</div>
-			</header>
+			</header> */}
 		</>
 	);
 }
