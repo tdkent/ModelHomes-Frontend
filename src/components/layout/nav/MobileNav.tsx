@@ -7,9 +7,19 @@ import { Button } from "@/components/ui/button";
 /** Render trigger button and drawer with nav. */
 export default function MobileNav() {
 	const [showShelf, setShowShelf] = useState(false);
+	const [mounted, setMounted] = useState(false);
+	const [container, setContainer] = useState<Element | null>(null);
 
-	const container = document.querySelector("#container") as Element;
+	// Create portal on mount
+	useEffect(() => {
+		const rootContainer = document.querySelector("#container");
+		if (rootContainer) {
+			setMounted(true);
+			setContainer(rootContainer);
+		}
+	}, []);
 
+	// Body scroll lock
 	useEffect(() => {
 		if (container) {
 			if (showShelf) container.classList.add("fixed");
@@ -20,13 +30,16 @@ export default function MobileNav() {
 	return (
 		<>
 			<Button variant="ghost" onClick={() => setShowShelf((prev) => !prev)}>
-				{showShelf ? (
-					<Minus className="size-6 stroke-2" />
-				) : (
-					<Menu className="size-6 stroke-2" />
-				)}
+				<Minus
+					className={`absolute size-6 stroke-2 transition-all duration-400 ${showShelf ? "opacity-100" : "opacity-0"}`}
+				/>
+				<Menu
+					className={`absolute size-6 stroke-2 transition-all duration-400 ${showShelf ? "opacity-0" : "opacity-100"}`}
+				/>
 			</Button>
-			{showShelf && createPortal(<Shelf />, container)}
+			{mounted && container
+				? createPortal(<Shelf showShelf={showShelf} />, container)
+				: null}
 		</>
 	);
 }
