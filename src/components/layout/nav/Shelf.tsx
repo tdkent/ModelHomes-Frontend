@@ -6,7 +6,7 @@ import { homeIds, navLinks } from "@/lib/navLinks";
 export default function Shelf() {
 	const [showHomes, setShowHomes] = useState(false);
 	return (
-		<div className="fixed top-0 right bg-white w-full h-screen z-40">
+		<div className="fixed top-0 right bg-white w-full h-screen z-40 animate-fade">
 			<div className="w-full h-full flex-1 px-4 pt-16 pb-8 flex flex-col">
 				<nav className="flex-1 min-h-0">
 					<ul className="flex flex-col h-full min-h-0 divide-y text-xl pt-8">
