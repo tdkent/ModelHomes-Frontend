@@ -28,9 +28,9 @@ export default function Shelf({
 	return (
 		<div
 			inert={!showShelf}
-			className={`fixed top-0 right bg-white w-full h-screen z-40 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100" : "opacity-0"}`}
+			className={`fixed top-0 right bg-white w-full h-dvh z-40 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100" : "opacity-0"}`}
 		>
-			<div className="w-full h-full flex-1 px-4 pt-16 pb-8 flex flex-col">
+			<div className="w-full h-full flex-1 px-4 pt-16 pb-2 flex flex-col">
 				<nav className="flex-1 min-h-0">
 					<ul className="flex flex-col h-full min-h-0 divide-y text-xl pt-8">
 						{navLinks.map((link) => {
@@ -84,9 +84,6 @@ export default function Shelf({
 						</li>
 					</ul>
 				</nav>
-				<div className="font-sans border-2 border-dotted p-2 rounded-lg text-base">
-					Model Homes of the San Francisco International Exposition, 1939-40
-				</div>
 			</div>
 		</div>
 	);
