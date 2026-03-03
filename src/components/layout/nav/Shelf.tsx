@@ -1,17 +1,34 @@
 import { ChevronRightIcon } from "lucide-react";
-import { useState } from "react";
+import { type Dispatch, type SetStateAction, useState } from "react";
 import { NavLink } from "react-router";
 import { homeIds, navLinks } from "@/lib/navLinks";
 
 interface Props {
+	instantClose: boolean;
+	setInstantClose: Dispatch<SetStateAction<boolean>>;
 	showShelf: boolean;
+	setShowShelf: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Shelf({ showShelf }: Props) {
+/** Shelf component for mobile navigation. */
+export default function Shelf({
+	instantClose,
+	setInstantClose,
+	showShelf,
+	setShowShelf,
+}: Props) {
 	const [showHomes, setShowHomes] = useState(false);
+
+	function handleClick() {
+		setShowShelf(false);
+		setShowHomes(false);
+		setInstantClose(true);
+	}
+
 	return (
 		<div
-			className={`fixed top-0 right bg-white w-full h-screen z-40 transition-all duration-400 ${showShelf ? "opacity-100" : "opacity-0"}`}
+			inert={!showShelf}
+			className={`fixed top-0 right bg-white w-full h-screen z-40 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100" : "opacity-0"}`}
 		>
 			<div className="w-full h-full flex-1 px-4 pt-16 pb-8 flex flex-col">
 				<nav className="flex-1 min-h-0">
@@ -19,7 +36,11 @@ export default function Shelf({ showShelf }: Props) {
 						{navLinks.map((link) => {
 							return (
 								<li key={link.label} className="py-4">
-									<NavLink to={link.href} className="w-full">
+									<NavLink
+										to={link.href}
+										className="w-full"
+										onClick={handleClick}
+									>
 										<div className="flex items-center justify-between">
 											{link.label}
 											<ChevronRightIcon className="size-4 text-blue-600" />
@@ -50,7 +71,7 @@ export default function Shelf({ showShelf }: Props) {
 										key={id}
 										className={`transition-all duration-300 ${showHomes ? "py-3" : "py-0"}`}
 									>
-										<NavLink to={`/homes/${id}`}>
+										<NavLink to={`/homes/${id}`} onClick={handleClick}>
 											<div className="flex items-center justify-between">
 												Home #{id}
 												<ChevronRightIcon className="size-4 text-blue-600" />

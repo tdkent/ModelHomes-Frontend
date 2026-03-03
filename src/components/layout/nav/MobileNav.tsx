@@ -9,6 +9,7 @@ export default function MobileNav() {
 	const [showShelf, setShowShelf] = useState(false);
 	const [mounted, setMounted] = useState(false);
 	const [container, setContainer] = useState<Element | null>(null);
+	const [instantClose, setInstantClose] = useState(false);
 
 	// Create portal on mount
 	useEffect(() => {
@@ -27,12 +28,17 @@ export default function MobileNav() {
 		}
 	}, [container, showShelf]);
 
+	function handleClick() {
+		setShowShelf((prev) => !prev);
+		setInstantClose(false);
+	}
+
 	return (
 		<>
 			<Button
 				aria-label={`${showShelf ? "Hide" : "Show"} Nav Menu`}
 				variant="ghost"
-				onClick={() => setShowShelf((prev) => !prev)}
+				onClick={handleClick}
 			>
 				<Minus
 					className={`absolute size-6 scale-x-125 stroke-2 transition-all duration-400 ${showShelf ? "opacity-100 rotate-45" : "opacity-0 rotate-0"}`}
@@ -45,7 +51,15 @@ export default function MobileNav() {
 				/>
 			</Button>
 			{mounted && container
-				? createPortal(<Shelf showShelf={showShelf} />, container)
+				? createPortal(
+						<Shelf
+							instantClose={instantClose}
+							setInstantClose={setInstantClose}
+							showShelf={showShelf}
+							setShowShelf={setShowShelf}
+						/>,
+						container,
+					)
 				: null}
 		</>
 	);
