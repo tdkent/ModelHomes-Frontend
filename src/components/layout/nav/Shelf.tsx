@@ -33,10 +33,15 @@ export default function Shelf() {
 								</div>
 							</button>
 							{showHomes && (
-								<ul className="flex-1 min-h-0 overflow-y-auto divide-y text-lg mt-2">
+								<ul className="flex-1 min-h-0 overflow-y-auto divide-y text-lg mt-4 px-4">
 									{homeIds.map((id) => (
-										<li key={id} className="py-2.5">
-											<NavLink to={`/homes/${id}`}>Home #{id}</NavLink>
+										<li key={id} className="py-3">
+											<NavLink to={`/homes/${id}`}>
+												<div className="flex items-center justify-between">
+													Home #{id}
+													<ChevronRightIcon className="size-4 text-blue-600" />
+												</div>
+											</NavLink>
 										</li>
 									))}
 								</ul>

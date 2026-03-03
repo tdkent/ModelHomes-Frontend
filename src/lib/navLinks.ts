@@ -6,4 +6,7 @@ export const navLinks: Link[] = [
 	{ label: "Tour Index", href: "/homes" },
 ];
 
-export const homeIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+export const homeIds = Array.from(
+	{ length: 30 },
+	(_, index) => index + 1,
+).filter((idx) => idx !== 13 && idx !== 22);
