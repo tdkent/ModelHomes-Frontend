@@ -11,7 +11,7 @@ import { navLinks } from "@/lib/navLinks";
 /** Render list of navigation links. */
 export default function DesktopNav() {
 	return (
-		<NavigationMenu className="max-sm:hidden">
+		<NavigationMenu className="max-md:hidden">
 			<NavigationMenuList>
 				{navLinks.map((link) => {
 					return (
@@ -20,7 +20,9 @@ export default function DesktopNav() {
 								asChild
 								className={navigationMenuTriggerStyle()}
 							>
-								<NavLink to={link.href}>{link.label}</NavLink>
+								<NavLink to={link.href} data-testid={`${link.testId}-link`}>
+									{link.label}
+								</NavLink>
 							</NavigationMenuLink>
 						</NavigationMenuItem>
 					);

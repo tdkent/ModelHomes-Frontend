@@ -40,6 +40,7 @@ export default function Shelf({
 										to={link.href}
 										className="w-full"
 										onClick={handleClick}
+										data-testid={`${link.testId}-mobile-link`}
 									>
 										<div className="flex items-center justify-between">
 											{link.label}

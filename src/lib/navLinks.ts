@@ -1,9 +1,9 @@
 import type { Link } from "@/types/types";
 
 export const navLinks: Link[] = [
-	{ label: "Home", href: "/" },
-	{ label: "About", href: "/about" },
-	{ label: "Tour Index", href: "/homes" },
+	{ label: "Home", href: "/", testId: "home" },
+	{ label: "About", href: "/about", testId: "about" },
+	{ label: "Tour Index", href: "/homes", testId: "homes" },
 ];
 
 export const homeIds = Array.from(
