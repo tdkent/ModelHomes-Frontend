@@ -42,13 +42,13 @@ export default function MobileNav() {
 				onClick={handleClick}
 			>
 				<Minus
-					className={`absolute size-6 scale-x-125 stroke-2 transition-all duration-400 ${showShelf ? "opacity-100 rotate-45" : "opacity-0 rotate-0"}`}
+					className={`absolute size-6 scale-x-125 stroke-2 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 rotate-45" : "opacity-0 rotate-0"}`}
 				/>
 				<Minus
-					className={`absolute size-6 scale-x-125 stroke-2 transition-all duration-400 ${showShelf ? "opacity-100 -rotate-45" : "opacity-0 rotate-0"}`}
+					className={`absolute size-6 scale-x-125 stroke-2 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 -rotate-45" : "opacity-0 rotate-0"}`}
 				/>
 				<Menu
-					className={`absolute size-6 stroke-2 transition-all duration-400 ${showShelf ? "opacity-0" : "opacity-100"}`}
+					className={`absolute size-6 stroke-2 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-0" : "opacity-100"}`}
 				/>
 			</Button>
 			{mounted && container
