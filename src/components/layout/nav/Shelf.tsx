@@ -34,24 +34,31 @@ export default function Shelf({ showShelf }: Props) {
 								onClick={() => setShowHomes((prev) => !prev)}
 							>
 								<div className="border-blue-200 flex items-center justify-between">
-									Homes
-									<ChevronRightIcon className="size-4 text-blue-600" />
+									Model Homes
+									<ChevronRightIcon
+										className={`size-4 text-blue-600 transition ${showHomes ? "rotate-90" : "rotate-0"}`}
+									/>
 								</div>
 							</button>
-							{showHomes && (
-								<ul className="flex-1 min-h-0 overflow-y-auto divide-y text-lg mt-4 px-4">
-									{homeIds.map((id) => (
-										<li key={id} className="py-3">
-											<NavLink to={`/homes/${id}`}>
-												<div className="flex items-center justify-between">
-													Home #{id}
-													<ChevronRightIcon className="size-4 text-blue-600" />
-												</div>
-											</NavLink>
-										</li>
-									))}
-								</ul>
-							)}
+
+							<ul
+								inert={!showHomes}
+								className={`mask-t-from-90% mask-b-from-90% flex-1 min-h-0 overflow-y-auto divide-y text-lg mt-4 px-4 transition duration-300 ${showHomes ? "opacity-100" : "opacity-0"}`}
+							>
+								{homeIds.map((id) => (
+									<li
+										key={id}
+										className={`transition-all duration-300 ${showHomes ? "py-3" : "py-0"}`}
+									>
+										<NavLink to={`/homes/${id}`}>
+											<div className="flex items-center justify-between">
+												Home #{id}
+												<ChevronRightIcon className="size-4 text-blue-600" />
+											</div>
+										</NavLink>
+									</li>
+								))}
+							</ul>
 						</li>
 					</ul>
 				</nav>
