@@ -3,10 +3,16 @@ import { useState } from "react";
 import { NavLink } from "react-router";
 import { homeIds, navLinks } from "@/lib/navLinks";
 
-export default function Shelf() {
+interface Props {
+	showShelf: boolean;
+}
+
+export default function Shelf({ showShelf }: Props) {
 	const [showHomes, setShowHomes] = useState(false);
 	return (
-		<div className="fixed top-0 right bg-white w-full h-screen z-40 animate-fade">
+		<div
+			className={`fixed top-0 right bg-white w-full h-screen z-40 transition-all duration-400 ${showShelf ? "opacity-100" : "opacity-0"}`}
+		>
 			<div className="w-full h-full flex-1 px-4 pt-16 pb-8 flex flex-col">
 				<nav className="flex-1 min-h-0">
 					<ul className="flex flex-col h-full min-h-0 divide-y text-xl pt-8">
