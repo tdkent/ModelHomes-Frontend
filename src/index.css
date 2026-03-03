@@ -147,6 +147,6 @@
   }
 
   .content {
-    @apply mx-4 my-10;
+    @apply mx-4 mb-10 mt-20;
   }
 }
