@@ -5,6 +5,16 @@
 @theme {
   --font-sans: "Poppins", sans-serif;
   --font-serif: "Lora", serif;
+  --animate-fade: fade 400ms;
+  
+  @keyframes fade {
+    0% {
+      opacity: 0
+    }
+    100% {
+      opacity: 100;
+    }
+  }
 }
 
 @theme inline {

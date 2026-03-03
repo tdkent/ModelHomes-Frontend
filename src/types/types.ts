@@ -1,6 +1,7 @@
 export interface Link {
 	label: string;
 	href: string;
+	testId: string;
 }
 
 export interface ModelHome {

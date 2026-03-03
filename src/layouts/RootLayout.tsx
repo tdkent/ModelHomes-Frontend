@@ -4,9 +4,9 @@ import Header from "@/components/layout/Header";
 export default function RootLayout() {
 	return (
 		<>
-			<div>
+			<div id="container" className="h-screen flex flex-col">
 				<Header />
-				<main>
+				<main className="flex-1">
 					<Outlet />
 				</main>
 				<Footer />

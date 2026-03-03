@@ -83,8 +83,7 @@ describe("Root nav element", () => {
 	it("navigates from Home to About using mobile nav", async () => {
 		renderWithClient(<App />, ["/"]);
 
-		await user.click(screen.getByRole("button"));
-		await user.click(screen.getByRole("link", { name: /about/i }));
+		await user.click(screen.getByTestId("about-mobile-link"));
 
 		expect(
 			await screen.findByRole("heading", { name: /about this website/i }),
@@ -94,7 +93,7 @@ describe("Root nav element", () => {
 	it("navigates from Home to About using desktop nav", async () => {
 		renderWithClient(<App />, ["/"]);
 
-		await user.click(screen.getByRole("link", { name: /about/i }));
+		await user.click(screen.getByTestId("about-link"));
 		expect(
 			screen.getByRole("heading", { name: /about this website/i }),
 		).toBeInTheDocument();
@@ -103,8 +102,7 @@ describe("Root nav element", () => {
 	it("navigates from About to Tour using mobile nav", async () => {
 		renderWithClient(<App />, ["/about"]);
 
-		await user.click(screen.getByRole("button"));
-		await user.click(screen.getByRole("link", { name: /model home tour/i }));
+		await user.click(screen.getByTestId("homes-mobile-link"));
 
 		expect(
 			await screen.findByRole("heading", { name: /model home tour/i }),
@@ -114,7 +112,7 @@ describe("Root nav element", () => {
 	it("navigates from Tour to Home using desktop nav", async () => {
 		renderWithClient(<App />, ["/homes"]);
 
-		await user.click(screen.getByRole("link", { name: "Home" }));
+		await user.click(screen.getByTestId("home-link"));
 
 		expect(
 			screen.getByRole("heading", {
@@ -138,8 +136,7 @@ describe("Root nav element", () => {
 	it("navigates from Tour Details to Tour using mobile nav", async () => {
 		renderWithClient(<App />, ["/homes/1"]);
 
-		await user.click(screen.getByRole("button"));
-		await user.click(screen.getByRole("link", { name: /model home tour/i }));
+		await user.click(screen.getByTestId("homes-mobile-link"));
 
 		expect(
 			await screen.findByRole("heading", { name: /model home tour/i }),
@@ -149,7 +146,7 @@ describe("Root nav element", () => {
 	it("navigates from Not Found to Home using desktop nav", async () => {
 		renderWithClient(<App />, ["/bad-route"]);
 
-		await user.click(screen.getByRole("link", { name: "Home" }));
+		await user.click(screen.getByTestId("home-link"));
 
 		expect(
 			screen.getByRole("heading", {
