@@ -44,7 +44,7 @@ export default function Image({
 					The image failed to load.
 				</div>
 			)}
-			<picture className={`flex w-full h-full ${error && "hidden"}`}>
+			<picture className={`block w-full h-full ${error && "hidden"}`}>
 				<source srcSet={srcSets.avif} sizes={sizes} type="image/avif" />
 				<source srcSet={srcSets.webp} sizes={sizes} type="image/webp" />
 				<img
