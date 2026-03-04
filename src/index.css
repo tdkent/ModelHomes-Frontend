@@ -5,16 +5,8 @@
 @theme {
   --font-sans: "Poppins", sans-serif;
   --font-serif: "Lora", serif;
-  --animate-fade: fade 400ms;
-  
-  @keyframes fade {
-    0% {
-      opacity: 0
-    }
-    100% {
-      opacity: 100;
-    }
-  }
+
+  --breakpoint-lg: 940px;
 }
 
 @theme inline {
@@ -130,8 +122,12 @@
     @apply text-blue-600;
   }
 
+  a.active {
+    @apply text-red-500;
+  }
+
   nav a {
-    @apply text-foreground;
+    @apply text-foreground lg:text-background;
   }
 
   dl {
@@ -147,6 +143,6 @@
   }
 
   .content {
-    @apply mx-4 mb-10 mt-20;
+    @apply mx-4 mb-10 mt-20 sm:mx-12 sm:mt-28 md:mt-32 md:mb-16;
   }
 }
