@@ -119,12 +119,16 @@ export default function HomeDetails({ id }: Props) {
 					<dd>{convertToUSD(currVal)}</dd>
 				</div>
 				<div>
-					<dt className="flex items-center">
+					<dt className="flex items-center gap-1">
 						FOVI
 						<Popover>
 							<PopoverTrigger asChild>
-								<Button variant="ghost">
-									<CircleQuestionMark />
+								<Button
+									variant="ghost"
+									className="cursor-pointer hover:bg-none"
+									aria-label="Open FOVI popover"
+								>
+									<CircleQuestionMark className="size-5" />
 								</Button>
 							</PopoverTrigger>
 							<PopoverContent>
