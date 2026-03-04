@@ -12,7 +12,7 @@ export default function Thumbnail({ id, imgId }: Thumbnail) {
 	const [error, setError] = useState(false);
 	const imgUrl = `${ASSETS_URL}/home-${id}/home-${imgId}@128.webp`;
 	return (
-		<div className="flex items-center justify-center rounded-full w-16 h-16 overflow-hidden relative border">
+		<div className="flex items-center justify-center rounded-full w-16 h-16 overflow-hidden relative border lg:w-20 lg:h-20">
 			{loading && <Image className="stroke-1 size-6 stroke-slate-400" />}
 			{error && <ImageOff className="stroke-1 size-6 stroke-slate-400" />}
 			<img

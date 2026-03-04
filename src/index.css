@@ -5,8 +5,6 @@
 @theme {
   --font-sans: "Poppins", sans-serif;
   --font-serif: "Lora", serif;
-
-  --breakpoint-lg: 940px;
 }
 
 @theme inline {
@@ -90,7 +88,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-slate-800 font-serif text-[18px];
+    @apply bg-background text-slate-800 font-serif text-[18px] xl:text-xl;
   }
 
   article,
@@ -103,11 +101,11 @@
   }
 
   h1 {
-    @apply text-[32px];
+    @apply text-[32px] lg:text-4xl xl:text-5xl;
   }
 
   h2 {
-    @apply text-[28px];
+    @apply text-[28px] lg:text-3xl xl:text-4xl;
   }
 
   h3 {
@@ -115,10 +113,10 @@
   }
 
   p {
-    @apply leading-7;
+    @apply leading-7 lg:leading-8;
   }
 
-  a {
+  section a {
     @apply text-blue-600;
   }
 
@@ -127,7 +125,7 @@
   }
 
   nav a {
-    @apply text-foreground lg:text-background;
+    @apply max-lg:text-foreground;
   }
 
   dl {
@@ -143,6 +141,14 @@
   }
 
   .content {
-    @apply mx-4 mb-10 mt-20 sm:mx-12 sm:mt-28 md:mt-32 md:mb-16;
+    @apply mx-4 mb-10 mt-20 sm:mx-12 sm:mt-28 md:mt-32 md:mb-16 lg:w-200 lg:mt-36 lg:mb-24 xl:mt-44;
+  }
+}
+
+@layer utilities {
+  @media (min-width:1024px) {
+    .clip-img {
+      clip-path: polygon(0 0, 100% 0%, 100% 92%, 0 100%);
+    }
   }
 }
