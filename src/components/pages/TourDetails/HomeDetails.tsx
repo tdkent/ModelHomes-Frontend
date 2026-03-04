@@ -73,7 +73,7 @@ export default function HomeDetails({ id }: Props) {
 	const parsedHtml = parse(html, options);
 
 	return (
-		<div className="content flex flex-col gap-10">
+		<div className="content flex flex-col gap-10 lg:mx-auto lg:gap-20">
 			<section>
 				<TextHeading element="h2" text="Location" />
 				<dl>

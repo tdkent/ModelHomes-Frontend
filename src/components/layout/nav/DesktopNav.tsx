@@ -20,7 +20,6 @@ export default function DesktopNav() {
 							</li>
 						);
 					})}
-					<li className="text-base">Homes</li>
 				</ul>
 			</nav>
 		</>

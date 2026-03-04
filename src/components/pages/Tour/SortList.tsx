@@ -11,7 +11,7 @@ interface Props {
  */
 export default function SortList({ setSortOption }: Props) {
 	return (
-		<div className="flex items-center gap-2 border rounded-lg bg-slate-50 my-4 px-4 py-2.5">
+		<div className="flex items-center gap-2 border rounded-lg bg-slate-50 my-4 px-4 py-2.5 lg:bg-transparent lg:border-none">
 			<label htmlFor="sort-homes">Sort by</label>
 			<select
 				id="sort-homes"
