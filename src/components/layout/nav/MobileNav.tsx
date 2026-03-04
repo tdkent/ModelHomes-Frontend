@@ -37,7 +37,7 @@ export default function MobileNav() {
 		<>
 			<Button
 				aria-label={`${showShelf ? "Hide" : "Show"} Nav Menu`}
-				className="md:hidden"
+				className="lg:hidden"
 				variant="ghost"
 				onClick={handleClick}
 			>

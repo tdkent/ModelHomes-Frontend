@@ -5,7 +5,7 @@ import { navLinks } from "@/lib/navLinks";
 export default function DesktopNav() {
 	return (
 		<>
-			<nav className="max-md:hidden font-sans">
+			<nav className="max-lg:hidden font-sans">
 				<ul className="flex items-center gap-8">
 					{navLinks.map((link) => {
 						return (
@@ -13,14 +13,14 @@ export default function DesktopNav() {
 								<NavLink
 									to={link.href}
 									data-testid={`${link.testId}-link`}
-									className="text-background text-base"
+									className="text-base"
 								>
 									{link.label}
 								</NavLink>
 							</li>
 						);
 					})}
-					<li className="text-background text-base">Homes</li>
+					<li className="text-base">Homes</li>
 				</ul>
 			</nav>
 		</>
