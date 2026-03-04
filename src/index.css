@@ -146,3 +146,11 @@
     @apply mx-4 mb-10 mt-20 sm:mx-12 sm:mt-28 md:mt-32 md:mb-16 lg:w-200 lg:mt-36 lg:mb-24;
   }
 }
+
+@layer utilities {
+  @media (min-width:940px) {
+    .clip-img {
+      clip-path: polygon(0 0, 100% 0%, 100% 92%, 0 100%);
+    }
+  }
+}
