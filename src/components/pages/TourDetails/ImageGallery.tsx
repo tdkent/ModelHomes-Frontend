@@ -35,27 +35,25 @@ export default function ImageGallery({ id, gallery }: Props) {
 									altText={`Model home #${id}`}
 									key={img}
 									srcSets={createSrcSets(baseUrl)}
-									imgUrl={`${baseUrl}@1280s.jpeg`}
+									imgUrl={`${baseUrl}@1280.jpeg`}
 									lazy
 								/>
 							</DialogTrigger>
-							<DialogContent className="max-h-full min-w-full rounded-none border-none p-0 [&>button]:hidden">
+							<DialogContent className="min-w-full h-full overflow-auto flex items-center justify-center bg-black/75 rounded-none border-none p-0 [&>button]:hidden">
 								<DialogHeader className="sr-only">
 									<DialogTitle>`Model Home #${id}`</DialogTitle>
 									<DialogDescription>
 										Full-screen image of Model Home #${id}
 									</DialogDescription>
 								</DialogHeader>
-								<div className="w-full h-auto">
-									<Image
-										altText={`Model home #${id}`}
-										key={img}
-										srcSets={createSrcSets(baseUrl)}
-										imgUrl={`${baseUrl}@1280s.jpeg`}
-										lazy
-									/>
-								</div>
-								<DialogFooter className="absolute right-2 top-2 scale-90 sm:justify-start md:right-4 md:top-4 lg:right-8 lg:top-8">
+
+								<img
+									src={`${baseUrl}@1280.jpeg`}
+									alt={`Model home #${id}`}
+									className="object-cover"
+								/>
+
+								<DialogFooter className="fixed right-2 top-2 scale-90 sm:justify-start md:right-4 md:top-4 lg:right-8 lg:top-8">
 									<DialogClose asChild>
 										<Button
 											aria-label="Close"
