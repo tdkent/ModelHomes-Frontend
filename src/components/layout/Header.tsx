@@ -1,4 +1,4 @@
-import { useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
 import Navigation from "@/components/layout/Navigation";
 
 export default function Header() {
@@ -11,7 +11,7 @@ export default function Header() {
 			>
 				<div className="flex items-center justify-between bg-white rounded-2xl px-4 w-full sm:py-2 sm:px-8 lg:bg-transparent lg:p-8 xl:px-16">
 					<div className="font-sans text-lg sm:text-2xl md:text-2xl xl:text-3xl">
-						g.g.i.e. model homes
+						<Link to="/">g.g.i.e. model homes</Link>
 					</div>
 					<Navigation />
 				</div>
