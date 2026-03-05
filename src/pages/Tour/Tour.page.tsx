@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import TourList from "@/components/pages/Tour/TourList";
 import TextHeading from "@/components/shared/TextHeader";
 
 export default function TourPage() {
+	useEffect(() => {
+		document.title =
+			"Home Tour | Model Homes of the San Francisco International Exposition";
+	}, []);
+
 	return (
 		<div className="content flex flex-col gap-10 lg:gap-20">
 			<h1>Model Home Tour</h1>

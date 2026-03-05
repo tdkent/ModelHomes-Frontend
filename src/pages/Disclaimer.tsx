@@ -1,4 +1,10 @@
+import { useEffect } from "react";
+
 export default function Disclaimer() {
+	useEffect(() => {
+		document.title =
+			"Privacy & Terms | Model Homes of the San Francisco International Exposition";
+	}, []);
 	return (
 		<div className="content font-sans text-base flex flex-col gap-8">
 			<header className="flex flex-col gap-4">
