@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router";
 import HomeDetails from "@/components/pages/TourDetails/HomeDetails";
 import Image from "@/components/shared/Image";
@@ -9,6 +10,13 @@ import NotFoundPage from "../NotFound.page";
 export default function TourDetailsPage() {
 	const { id } = useParams();
 	const validId = checkHomeId(id);
+
+	useEffect(() => {
+		if (validId)
+			document.title = `Model Home #${validId} | Model Homes of the San Francisco International
+					Exposition`;
+	}, [validId]);
+
 	if (!validId) return <NotFoundPage />;
 
 	const baseUrl = `${ASSETS_URL}/home-${validId}/home-${validId}-1`;

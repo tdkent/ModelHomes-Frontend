@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import { Link } from "react-router";
 import Splash from "@/components/pages/Homes/Splash";
 import TextHeading from "@/components/shared/TextHeader";
 
 export default function HomePage() {
+	useEffect(() => {
+		document.title =
+			"Home | Model Homes of the San Francisco International Exposition";
+	}, []);
+
 	return (
 		<>
 			<Splash />

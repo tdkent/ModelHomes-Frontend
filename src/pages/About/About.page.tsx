@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import TextHeading from "@/components/shared/TextHeader";
 
 export default function AboutPage() {
+	useEffect(() => {
+		document.title =
+			"About | Model Homes of the San Francisco International Exposition";
+	}, []);
+
 	return (
 		<div className="content">
 			<section>
