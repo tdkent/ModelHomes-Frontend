@@ -1,4 +1,5 @@
 import { Route, Routes as RouteGroup } from "react-router";
+import Disclaimer from "@/pages/Disclaimer";
 import RootLayout from "../layouts/RootLayout";
 import AboutPage from "../pages/About/About.page";
 import HomePage from "../pages/Home/Home.page";
@@ -15,6 +16,7 @@ export default function Routes() {
 					<Route element={<AboutPage />} path="/about" />
 					<Route element={<TourPage />} path="/homes" />
 					<Route element={<TourDetails />} path="/homes/:id" />
+					<Route element={<Disclaimer />} path="/disclaimer" />
 					<Route element={<NotFoundPage />} path="*" />
 				</Route>
 			</RouteGroup>

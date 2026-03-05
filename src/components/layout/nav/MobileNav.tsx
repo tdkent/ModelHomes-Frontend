@@ -37,7 +37,7 @@ export default function MobileNav() {
 		<>
 			<Button
 				aria-label={`${showShelf ? "Hide" : "Show"} Nav Menu`}
-				className="lg:hidden"
+				className="lg:hidden cursor-pointer"
 				variant="ghost"
 				onClick={handleClick}
 			>

@@ -31,13 +31,15 @@ export default function ImageGallery({ id, gallery }: Props) {
 					return (
 						<Dialog key={img}>
 							<DialogTrigger className="cursor-pointer scale:100 hover:scale-105 transition duration-300">
-								<Image
-									altText={`Model home #${id}`}
-									key={img}
-									srcSets={createSrcSets(baseUrl)}
-									imgUrl={`${baseUrl}@1280.jpeg`}
-									lazy
-								/>
+								<div className="border border-white md:shadow-[8px_8px_1px] transition duration-300 md:hover:shadow-[12px_12px_6px] shadow-black/40">
+									<Image
+										altText={`Model home #${id}`}
+										key={img}
+										srcSets={createSrcSets(baseUrl)}
+										imgUrl={`${baseUrl}@1280.jpeg`}
+										lazy
+									/>
+								</div>
 							</DialogTrigger>
 							<DialogContent className="min-w-full h-full overflow-auto flex items-center justify-center bg-black/75 rounded-none border-none p-0 [&>button]:hidden">
 								<DialogHeader className="sr-only">

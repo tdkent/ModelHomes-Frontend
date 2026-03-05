@@ -119,18 +119,24 @@ export default function HomeDetails({ id }: Props) {
 					<dd>{convertToUSD(currVal)}</dd>
 				</div>
 				<div>
-					<dt className="flex items-center">
+					<dt className="flex items-center gap-1">
 						FOVI
 						<Popover>
 							<PopoverTrigger asChild>
-								<Button variant="ghost">
-									<CircleQuestionMark />
+								<Button
+									variant="ghost"
+									className="cursor-pointer"
+									aria-label="Open FOVI popover"
+								>
+									<CircleQuestionMark className="size-5" />
 								</Button>
 							</PopoverTrigger>
-							<PopoverContent>
+							<PopoverContent className="font-sans">
 								<PopoverHeader>
-									<PopoverTitle>What is FOVI?</PopoverTitle>
-									<PopoverDescription>
+									<PopoverTitle className="text-base">
+										What is FOVI?
+									</PopoverTitle>
+									<PopoverDescription className="text-base">
 										FOVI is a metric is obtained by dividing the home value as
 										of 1 January, 2025 by the inflation-adjusted asking price in
 										1939/40. For example, a FOVI of 10 means the value has

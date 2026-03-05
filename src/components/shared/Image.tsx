@@ -7,6 +7,7 @@ interface Props {
 	aspectRatio?: string;
 	imgStyles?: string;
 	imgUrl: string;
+	isHeader?: boolean;
 	lazy?: boolean;
 	sizes?: string;
 	srcSets: SrcSets;
@@ -18,6 +19,7 @@ export default function Image({
 	aspectRatio,
 	imgStyles,
 	imgUrl,
+	isHeader,
 	lazy,
 	sizes,
 	srcSets,
@@ -30,21 +32,23 @@ export default function Image({
 
 	return (
 		<div
-			className={`w-full overflow-hidden border bg-[#f9f9f9] ${aspectRatio || loadingAspectRatio}`}
+			className={`w-full overflow-hidden bg-[#f9f9f9] ${aspectRatio || loadingAspectRatio}`}
 		>
 			{loading && (
-				<div className="flex items-center gap-2 text-sm p-4">
+				<div className="flex items-center justify-center gap-2 text-sm p-4">
 					<LoaderCircle className="size-6 stroke-1 animate-spin" />
 					Loading...
 				</div>
 			)}
 			{error && (
-				<div className="flex items-center gap-2 text-sm p-4">
+				<div className="flex items-center justify-center gap-2 text-sm p-4">
 					<ImageOff className="size-6 stroke-1" />
 					The image failed to load.
 				</div>
 			)}
-			<picture className={`block w-full h-full ${error && "hidden"}`}>
+			<picture
+				className={`${isHeader ? "flex" : "block"} w-full h-full ${error && "hidden"}`}
+			>
 				<source srcSet={srcSets.avif} sizes={sizes} type="image/avif" />
 				<source srcSet={srcSets.webp} sizes={sizes} type="image/webp" />
 				<img

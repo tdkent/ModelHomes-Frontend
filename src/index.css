@@ -141,7 +141,7 @@
   }
 
   .content {
-    @apply mx-4 mb-10 mt-20 sm:mx-12 sm:mt-28 md:mt-32 md:mb-16 lg:w-200 lg:mt-36 lg:mb-24 xl:mt-44;
+    @apply mx-4 mb-16 mt-24 sm:mx-12 sm:mt-28 md:mt-32 md:mb-16 lg:w-200 lg:mt-36 lg:mb-24 xl:mt-44;
   }
 }
 

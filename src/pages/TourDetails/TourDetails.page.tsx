@@ -22,11 +22,12 @@ export default function TourDetailsPage() {
 					aspectRatio="aspect-square sm:aspect-video lg:aspect-2/1 xl:aspect-5/2"
 					imgStyles="blur-xs scale-105 lg:blur-[6px] opacity-75"
 					imgUrl={`${baseUrl}@1280s.jpeg`}
+					isHeader
 					srcSets={srcSets}
 				/>
 				<div className="absolute bottom-0 left-0 right-0 h-1/3 bg-linear-to-t from-white to-transparent"></div>
-				<div className="border-2 border-red-600 w-full">
-					<h1 className="absolute top-1/2 px-6 -translate-y-1/2 font-sans text-[32px] text-background drop-shadow-[2px_2px_0] sm:drop-shadow-[2px_3px_0] xl:drop-shadow-[3px_5px_0] drop-shadow-blue-300 sm:text-5xl sm:px-12 lg:px-12 lg:text-6xl xl:px-20 lg:w-full lg:text-center xl:text-7xl 2xl:text-8xl">
+				<div className="w-full">
+					<h1 className="absolute w-full top-1/2 px-6 -translate-y-1/2 font-sans text-[9vw] text-center text-background drop-shadow-[1px_1px_0] drop-shadow-blue-900 sm:drop-shadow-blue-400 sm:drop-shadow-[2px_3px_0] sm:px-12 lg:px-12 lg:text-[7vw] xl:px-20 xl:drop-shadow-[3px_5px_0]">
 						Model Home #{validId}
 					</h1>
 				</div>
