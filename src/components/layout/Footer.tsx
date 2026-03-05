@@ -13,6 +13,7 @@ export default function Footer() {
 					);
 				})}
 			</ul>
+			<Link to="/disclaimer">Privacy & Terms</Link>
 			<span>
 				Header image:{" "}
 				<a
