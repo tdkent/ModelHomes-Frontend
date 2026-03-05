@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router";
 
 export default function NotFoundPage() {
 	useEffect(() => {
@@ -8,8 +9,11 @@ export default function NotFoundPage() {
 
 	return (
 		<>
-			<h2>404 - Page Not Found</h2>
-			<p>Return home</p>
+			<section className="content">
+				<h1>404 - Page Not Found</h1>
+				<p>The requested page could not be found.</p>
+				<Link to="/">Return Home</Link>
+			</section>
 		</>
 	);
 }

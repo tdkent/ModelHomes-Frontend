@@ -13,9 +13,8 @@ export default function Footer() {
 					);
 				})}
 			</ul>
-			<Link to="/disclaimer">Privacy & Terms</Link>
 			<span>
-				Header image:{" "}
+				GGIE Postcard:{" "}
 				<a
 					href="https://commons.wikimedia.org/wiki/File:Treasure_Island,_Golden_Gate_International_Exposition,_1938_-_Linen_Postcard_(4253084805).jpg"
 					target="_blank"
@@ -26,7 +25,12 @@ export default function Footer() {
 				, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>,
 				via Wikimedia Commons
 			</span>
-			<span>© 2026. All rights reserved.</span>
+			<span>
+				© 2026. All rights reserved.{" "}
+				<Link to="/disclaimer" className="underline hover:no-underline">
+					Privacy & Terms
+				</Link>
+			</span>
 		</footer>
 	);
 }
