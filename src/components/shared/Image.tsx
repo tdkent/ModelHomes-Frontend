@@ -35,13 +35,13 @@ export default function Image({
 			className={`w-full overflow-hidden bg-[#f9f9f9] ${aspectRatio || loadingAspectRatio}`}
 		>
 			{loading && (
-				<div className="flex items-center gap-2 text-sm p-4">
+				<div className="flex items-center justify-center gap-2 text-sm p-4">
 					<LoaderCircle className="size-6 stroke-1 animate-spin" />
 					Loading...
 				</div>
 			)}
 			{error && (
-				<div className="flex items-center gap-2 text-sm p-4">
+				<div className="flex items-center justify-center gap-2 text-sm p-4">
 					<ImageOff className="size-6 stroke-1" />
 					The image failed to load.
 				</div>
