@@ -1,6 +1,6 @@
 # Model Homes of the Golden Gate International Exposition, 1939-40
 
-> This documentation is for the **React frontend** of [ggiemh.com](https://ggiemh.com).
+> Documentation for the **React frontend** of [ggiemh.com](https://ggiemh.com).
 
 ## About
 
@@ -16,32 +16,6 @@
 - Images rendered in efficient preprocessed AVIF and WebP formats.
 - Integration and unit tests ensure reliability.
 - Automated cloud deployment via GitHub Actions CI/CD pipeline.
-
-### Local Development
-
-```bash
-# Install deps and run
-npm install
-npm run dev
-
-# Lint and fix
-npm run lint:fix
-
-# Run tests
-npm run test
-
-# Build
-npm run build
-```
-
-#### Environment variables
-
-```
-.env
-
-VITE_BACKEND_URL=http://localhost:<PORT>
-VITE_ASSETS_URL=https://ggiemh.com/assets
-```
 
 ### Testing
 
@@ -77,16 +51,11 @@ The site domain `ggiemh.com` is managed by Route 53. SSL certification is config
 
 ### Request path
 
-```
-Browser
-|
--> Route 53 w/SSL
-   |
-   -> CloudFront distro
-      |
-      -> S3 (build bucket) -> Fetch build files
-      |
-      -> S3 (asset bucket) -> Fetch images
+```mermaid
+flowchart LR
+  A((Browser)) --> B(Route 53 w/SSL) --> C(CloudFront)
+  C --> D(S3 - Build Files)
+  C --> E(S3 - Data/Images)
 ```
 
 ## UI
@@ -115,5 +84,35 @@ While image data loads, placeholder "Loading..." elements provide continuity and
 
 ## Additional Information
 
+### Links
+
 - [Backend repository](https://github.com/tdkent/ggiemh-backend)
 - [Visit ggiemh.com](https://ggiemh.com)
+
+### Local Development
+
+> How to run the application locally. Requires Node.
+
+```bash
+# Install deps and run
+npm install
+npm run dev
+
+# Lint and fix
+npm run lint:fix
+
+# Run tests
+npm run test
+
+# Build
+npm run build
+```
+
+#### Environment variables
+
+```
+.env
+
+VITE_BACKEND_URL=http://localhost:<PORT>
+VITE_ASSETS_URL=https://ggiemh.com/assets
+```
