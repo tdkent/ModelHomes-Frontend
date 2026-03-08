@@ -8,6 +8,7 @@ export default function Disclaimer() {
 					Privacy & Terms | Model Homes of the San Francisco International
 					Exposition
 				</title>
+				<link rel="canonical" href="https://ggiemh.com/disclaimer" />
 			</Helmet>
 			<div className="content font-sans text-base flex flex-col gap-8">
 				<header className="flex flex-col gap-4">
