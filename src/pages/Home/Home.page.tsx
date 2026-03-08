@@ -1,16 +1,17 @@
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router";
 import Splash from "@/components/pages/Homes/Splash";
 import TextHeading from "@/components/shared/TextHeader";
 
 export default function HomePage() {
-	useEffect(() => {
-		document.title =
-			"Home | Model Homes of the San Francisco International Exposition";
-	}, []);
-
 	return (
 		<>
+			<Helmet>
+				<title>
+					Home | Model Homes of the San Francisco International Exposition
+				</title>
+				<link rel="canonical" href="https://ggiemh.com" />
+			</Helmet>
 			<Splash />
 			<div className="content">
 				<article>
