@@ -53,9 +53,17 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Upload dist files
+      - name: Remove stale dist
         run: |
-          aws s3 cp ./dist/ s3://${{ secrets.S3_BUCKET }}/ --recursive
+          aws s3 rm s3://${{ secrets.S3_BUCKET }}/ --recursive
+
+      - name: Upload all except HTML w/1-yr cache policy
+        run: |
+          aws s3 cp ./dist/ s3://${{ secrets.S3_BUCKET }}/ --exclude "*.html" --cache-control "max-age=31536000, immutable" --recursive
+
+      - name: Upload HTML w/no-cache policy
+        run: |
+          aws s3 cp ./dist/ s3://${{ secrets.S3_BUCKET }}/ --exclude "*" --include "*.html" --cache-control no-cache --recursive
       
       - name: Invalidate CloudFront cache
         run: |
