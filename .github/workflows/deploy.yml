@@ -61,9 +61,9 @@ jobs:
         run: |
           aws s3 cp ./dist/ s3://${{ secrets.S3_BUCKET }}/ --exclude "*.html" --cache-control "max-age=31536000, immutable" --recursive
 
-      # - name: Upload dist files
-      #   run: |
-      #     aws s3 cp ./dist/ s3://${{ secrets.S3_BUCKET }}/ --cache-control max-age=60 --recursive
+      - name: Upload HTML w/no-cache policy
+        run: |
+          aws s3 cp ./dist/ s3://${{ secrets.S3_BUCKET }}/ --exclude "*" --include "*.html" --cache-control no-cache --recursive
       
       - name: Invalidate CloudFront cache
         run: |
