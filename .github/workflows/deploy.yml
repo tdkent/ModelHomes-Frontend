@@ -59,7 +59,9 @@ jobs:
 
       - name: Upload dist files
         run: |
-          aws s3 cp ./dist/ s3://${{ secrets.S3_BUCKET }}/ --recursive
+          aws s3 cp ./dist/ s3://${{ secrets.S3_BUCKET }}/ \ 
+          --cache-control max-age=60
+          --recursive
       
       - name: Invalidate CloudFront cache
         run: |
