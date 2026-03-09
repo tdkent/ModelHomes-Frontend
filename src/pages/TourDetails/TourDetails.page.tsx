@@ -28,7 +28,7 @@ export default function TourDetailsPage() {
 	const title = `Model Home #${validId} | Model Homes of the San Francisco International
 					Exposition`;
 	const canonicalUrl = `https://ggiemh.com/homes/${validId}`;
-	const imgUrl = `${baseUrl}@1280s.jpeg`;
+	const imgUrl = `${baseUrl}@1280.jpeg`;
 
 	return (
 		<>
