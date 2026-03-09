@@ -1,5 +1,6 @@
+import { useLayoutEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import HomeDetails from "@/components/pages/TourDetails/HomeDetails";
 import Image from "@/components/shared/Image";
 import { ASSETS_URL } from "@/constants/constants";
@@ -11,6 +12,14 @@ export default function TourDetailsPage() {
 	const { id } = useParams();
 	const validId = checkHomeId(id);
 
+	const location = useLocation();
+
+	// Force instant scroll to top of page on load
+	// biome-ignore lint/correctness/useExhaustiveDependencies: effect runs on location change
+	useLayoutEffect(() => {
+		window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+	}, [location.pathname]);
+
 	if (!validId) return <NotFoundPage />;
 
 	const baseUrl = `${ASSETS_URL}/home-${validId}/home-${validId}-1`;
@@ -19,20 +28,29 @@ export default function TourDetailsPage() {
 	const title = `Model Home #${validId} | Model Homes of the San Francisco International
 					Exposition`;
 	const canonicalUrl = `https://ggiemh.com/homes/${validId}`;
+	const imgUrl = `${baseUrl}@1280s.jpeg`;
 
 	return (
 		<>
 			<Helmet>
 				<title>{title}</title>
 				<link rel="canonical" href={canonicalUrl} />
+				<link
+					as="image"
+					rel="preload"
+					href={imgUrl}
+					type="image/jpeg"
+					fetchPriority="high"
+				/>
 			</Helmet>
 			<article className="gap-4">
 				<header className="relative">
 					<Image
 						altText={`Model Home #${validId}`}
 						aspectRatio="aspect-square sm:aspect-video lg:aspect-2/1 xl:aspect-5/2"
+						fetchPriority="high"
 						imgStyles="blur-xs scale-105 lg:blur-[6px] opacity-75"
-						imgUrl={`${baseUrl}@1280s.jpeg`}
+						imgUrl={imgUrl}
 						isHeader
 						srcSets={srcSets}
 					/>

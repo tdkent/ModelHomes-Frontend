@@ -5,6 +5,7 @@ import type { SrcSets } from "@/types/types";
 interface Props {
 	altText: string;
 	aspectRatio?: string;
+	fetchPriority?: "high";
 	imgStyles?: string;
 	imgUrl: string;
 	isHeader?: boolean;
@@ -17,6 +18,7 @@ interface Props {
 export default function Image({
 	altText,
 	aspectRatio,
+	fetchPriority,
 	imgStyles,
 	imgUrl,
 	isHeader,
@@ -47,7 +49,7 @@ export default function Image({
 				</div>
 			)}
 			<picture
-				className={`${isHeader ? "flex" : "block"} w-full h-full ${error && "hidden"}`}
+				className={`${isHeader ? "flex" : "block"} w-full h-full ${error ? "hidden" : ""}`}
 			>
 				<source srcSet={srcSets.avif} sizes={sizes} type="image/avif" />
 				<source srcSet={srcSets.webp} sizes={sizes} type="image/webp" />
@@ -62,6 +64,7 @@ export default function Image({
 						setLoading(false);
 						setError(true);
 					}}
+					fetchPriority={fetchPriority}
 				/>
 			</picture>
 		</div>
