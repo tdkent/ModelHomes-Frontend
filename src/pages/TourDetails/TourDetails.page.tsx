@@ -1,5 +1,6 @@
+import { useLayoutEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import HomeDetails from "@/components/pages/TourDetails/HomeDetails";
 import Image from "@/components/shared/Image";
 import { ASSETS_URL } from "@/constants/constants";
@@ -10,6 +11,14 @@ import NotFoundPage from "../NotFound.page";
 export default function TourDetailsPage() {
 	const { id } = useParams();
 	const validId = checkHomeId(id);
+
+	const location = useLocation();
+
+	// Force instant scroll to top of page on load
+	// biome-ignore lint/correctness/useExhaustiveDependencies: effect runs on location change
+	useLayoutEffect(() => {
+		window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+	}, [location.pathname]);
 
 	if (!validId) return <NotFoundPage />;
 
