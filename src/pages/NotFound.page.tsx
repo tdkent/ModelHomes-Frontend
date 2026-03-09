@@ -13,7 +13,9 @@ export default function NotFoundPage() {
 			<section className="content">
 				<h1>404 - Page Not Found</h1>
 				<p>The requested page could not be found.</p>
-				<Link to="/">Return Home</Link>
+				<Link className="w-fit" to="/">
+					Return Home
+				</Link>
 			</section>
 		</>
 	);
