@@ -28,20 +28,29 @@ export default function TourDetailsPage() {
 	const title = `Model Home #${validId} | Model Homes of the San Francisco International
 					Exposition`;
 	const canonicalUrl = `https://ggiemh.com/homes/${validId}`;
+	const imgUrl = `${baseUrl}@1280s.jpeg`;
 
 	return (
 		<>
 			<Helmet>
 				<title>{title}</title>
 				<link rel="canonical" href={canonicalUrl} />
+				<link
+					as="image"
+					rel="preload"
+					href={imgUrl}
+					type="image/jpeg"
+					fetchPriority="high"
+				/>
 			</Helmet>
 			<article className="gap-4">
 				<header className="relative">
 					<Image
 						altText={`Model Home #${validId}`}
 						aspectRatio="aspect-square sm:aspect-video lg:aspect-2/1 xl:aspect-5/2"
+						fetchPriority="high"
 						imgStyles="blur-xs scale-105 lg:blur-[6px] opacity-75"
-						imgUrl={`${baseUrl}@1280s.jpeg`}
+						imgUrl={imgUrl}
 						isHeader
 						srcSets={srcSets}
 					/>
